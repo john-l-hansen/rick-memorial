@@ -1,75 +1,187 @@
-// memorial-screen.elyx - Memorial Page Design for Richard Earl LaDow Jr.
+// memorial-screen.elyx - Complete Memorial Screen honoring Richard Earl LaDow Jr.
 
 import "./tokens.elyx" as tokens
+import "./components/Button.elyx" as Button
+import "./components/EventDetailsCard.elyx" as EventDetailsCard
+import "./components/PhotoGallery.elyx" as PhotoGallery
 
-screen MemorialPage {
-  width = 1200
+screen MemorialScreen {
+  width = 1280
   height = auto
-  backgroundColor = tokens.colors.bgPrimary
+  backgroundColor = tokens.colors.bgCanvas
 
-  // Hero Section
-  frame HeroSection {
-    layout = vertical
+  // 1. Navigation / Top Bar
+  frame TopNav {
+    width = 100%
+    paddingHorizontal = tokens.spacing.xl
+    paddingVertical = tokens.spacing.md
+    layout = horizontal
+    justify = space-between
     alignment = center
-    padding = tokens.spacing.xxl
-    gap = tokens.spacing.md
+    borderBottom = { width = 1, color = tokens.colors.borderSubtle }
+    backgroundColor = tokens.colors.bgSurface
 
-    text TributeHeader {
-      content = "A TRIBUTE TO RICK"
-      style = tokens.typography.subtitle
-      color = tokens.colors.accentWarm
+    text SiteBrand {
+      content = "IN LOVING MEMORY"
+      style = tokens.typography.eyebrow
+      color = tokens.colors.primary700
     }
 
-    text NameTitle {
+    frame NavLinks {
+      layout = horizontal
+      gap = tokens.spacing.lg
+      
+      text LinkService {
+        content = "Service Details"
+        style = tokens.typography.bodySmall
+        color = tokens.colors.textSecondary
+      }
+      text LinkStory {
+        content = "Life & Tribute"
+        style = tokens.typography.bodySmall
+        color = tokens.colors.textSecondary
+      }
+      text LinkPhotos {
+        content = "Photos"
+        style = tokens.typography.bodySmall
+        color = tokens.colors.textSecondary
+      }
+      text LinkRSVP {
+        content = "RSVP"
+        style = tokens.typography.bodySmall
+        color = tokens.colors.primary900
+        weight = 600
+      }
+    }
+  }
+
+  // 2. Hero Section (Warm, Emotional, matching Lindy LaDow Hero style)
+  frame HeroSection {
+    width = 100%
+    layout = vertical
+    alignment = center
+    paddingVertical = tokens.spacing.section
+    paddingHorizontal = tokens.spacing.xl
+    gap = tokens.spacing.lg
+    backgroundColor = tokens.colors.primary50
+
+    text Eyebrow {
+      content = "A TRIBUTE TO RICK"
+      style = tokens.typography.eyebrow
+      color = tokens.colors.primary700
+    }
+
+    text NameHeading {
       content = "Richard Earl LaDow Jr."
-      style = tokens.typography.titleHero
+      style = tokens.typography.heroDisplay
       color = tokens.colors.textPrimary
     }
 
     text LifeDates {
       content = "October 5, 1957 — June 8, 2026"
-      style = tokens.typography.body
-      color = tokens.colors.textSecondary
+      style = tokens.typography.bodyLead
+      color = tokens.colors.primary800
     }
 
     text RolesSubtitle {
       content = "HUSBAND — FATHER — PAPA — SON — BROTHER — UNCLE — FRIEND"
-      style = tokens.typography.subtitle
-      color = tokens.colors.accentWarmDark
+      style = tokens.typography.eyebrow
+      color = tokens.colors.primary600
+    }
+
+    text PersonalQuote {
+      content = "“Truly, a loving brother to all.”"
+      font = tokens.typography.fontSerif
+      size = 24
+      style = italic
+      color = tokens.colors.primary900
+    }
+
+    frame HeroCTA {
+      layout = horizontal
+      gap = tokens.spacing.md
+      
+      instance RSVPButton of Button {
+        style = "primary"
+        label.content = "RSVP for the Memorial"
+      }
+      instance StoryButton of Button {
+        style = "outline"
+        label.content = "Read Rick's Story"
+      }
     }
   }
 
-  // Event Details Card
-  frame EventCard {
+  // 3. Main Content Container
+  frame MainContent {
+    width = 1000
     layout = vertical
-    backgroundColor = tokens.colors.bgCard
-    cornerRadius = tokens.radii.lg
-    padding = tokens.spacing.xl
-    gap = tokens.spacing.md
-    borderColor = tokens.colors.borderSubtle
+    alignment = center
+    gap = tokens.spacing.section
+    paddingVertical = tokens.spacing.section
 
-    text EventTitle {
-      content = "Celebration of Life Gathering"
-      style = tokens.typography.titleHero
-      color = tokens.colors.textPrimary
+    // Event Card Component
+    instance GatheringCard of EventDetailsCard {
+      width = 100%
     }
 
-    text EventDate {
-      content = "Saturday, November 7, 2026\n11:00 a.m. — 3:00 p.m."
-      style = tokens.typography.body
-      color = tokens.colors.textPrimary
+    // Story / Tribute Section
+    frame StorySection {
+      width = 100%
+      layout = vertical
+      backgroundColor = tokens.colors.bgSurface
+      padding = tokens.spacing.xl
+      cornerRadius = tokens.radii.md
+      gap = tokens.spacing.md
+      border = { width = 1, color = tokens.colors.borderSubtle }
+      shadow = tokens.shadows.card
+
+      text StoryTagline {
+        content = "HONORING HIS MEMORY"
+        style = tokens.typography.eyebrow
+        color = tokens.colors.primary700
+      }
+
+      text StoryHeading {
+        content = "Celebrating Rick's Life & Legacy"
+        style = tokens.typography.headingH2
+        color = tokens.colors.textPrimary
+      }
+
+      text StoryBody {
+        content = "Please join us for a private gathering to celebrate Rick, remember the life he lived, and honor the love, laughter, friendship, and memories he left with each of us.\n\nThroughout his life, Rick touched countless hearts with his kindness, humor, and unwavering devotion to family and friends. We welcome all who knew and loved him to share in this special afternoon of remembrance and reflection."
+        style = tokens.typography.bodyLead
+        color = tokens.colors.textSecondary
+      }
     }
 
-    text EventVenue {
-      content = "Fraternal Order of Eagles — Azusa Aerie #2810\n1603 San Gabriel Canyon Road, Azusa, California 91702"
-      style = tokens.typography.body
-      color = tokens.colors.textSecondary
+    // Photo Gallery Section
+    instance Gallery of PhotoGallery {
+      width = 100%
+    }
+  }
+
+  // 4. Footer
+  frame PageFooter {
+    width = 100%
+    backgroundColor = tokens.colors.primary975
+    paddingVertical = tokens.spacing.xl
+    paddingHorizontal = tokens.spacing.xl
+    layout = vertical
+    alignment = center
+    gap = tokens.spacing.sm
+
+    text FooterName {
+      content = "Richard Earl LaDow Jr. (1957 — 2026)"
+      font = tokens.typography.fontSerif
+      size = 18
+      color = tokens.colors.primary200
     }
 
-    text EventRSVP {
-      content = "Kindly RSVP by November 1, 2026: ricksmemorialtribute11276@gmail.com"
+    text FooterNote {
+      content = "With love from his family and friends."
       style = tokens.typography.bodySmall
-      color = tokens.colors.accentWarm
+      color = tokens.colors.primary400
     }
   }
 }

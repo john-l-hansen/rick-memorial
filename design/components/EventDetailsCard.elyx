@@ -1,0 +1,101 @@
+// EventDetailsCard.elyx - Lindy LaDow styled card for memorial service details
+
+import "../tokens.elyx" as tokens
+import "./Button.elyx" as Button
+
+component EventDetailsCard {
+  layout = vertical
+  backgroundColor = tokens.colors.bgSurface
+  cornerRadius = tokens.radii.md
+  padding = tokens.spacing.xl
+  gap = tokens.spacing.lg
+  border = { width = 1, color = tokens.colors.borderSubtle }
+  shadow = tokens.shadows.card
+
+  frame HeaderBlock {
+    layout = vertical
+    gap = tokens.spacing.xxs
+
+    text Tagline {
+      content = "CELEBRATION OF LIFE"
+      style = tokens.typography.eyebrow
+      color = tokens.colors.primary700
+    }
+
+    text Title {
+      content = "Gathering in Honor of Rick"
+      style = tokens.typography.headingH2
+      color = tokens.colors.textPrimary
+    }
+  }
+
+  frame DetailList {
+    layout = vertical
+    gap = tokens.spacing.md
+
+    frame DateRow {
+      layout = horizontal
+      gap = tokens.spacing.sm
+      
+      text DateLabel {
+        content = "When:"
+        weight = 600
+        style = tokens.typography.body
+        color = tokens.colors.primary900
+      }
+      text DateValue {
+        content = "Saturday, November 7, 2026 | 11:00 a.m. — 3:00 p.m."
+        style = tokens.typography.body
+        color = tokens.colors.textSecondary
+      }
+    }
+
+    frame LocationRow {
+      layout = horizontal
+      gap = tokens.spacing.sm
+
+      text LocationLabel {
+        content = "Where:"
+        weight = 600
+        style = tokens.typography.body
+        color = tokens.colors.primary900
+      }
+      text LocationValue {
+        content = "Fraternal Order of Eagles — Azusa Aerie #2810\n1603 San Gabriel Canyon Road, Azusa, CA 91702"
+        style = tokens.typography.body
+        color = tokens.colors.textSecondary
+      }
+    }
+
+    frame NoteRow {
+      layout = vertical
+      gap = tokens.spacing.xxs
+      padding = tokens.spacing.md
+      backgroundColor = tokens.colors.primary50
+      cornerRadius = tokens.radii.sm
+      border = { width = 1, color = tokens.colors.primary200 }
+
+      text MemoryNote {
+        content = "We invite you to bring a favorite memory of Rick, written down or simply carried in your heart. There will be a special place to leave your written memories for our family to keep."
+        style = tokens.typography.bodySmall
+        color = tokens.colors.textSecondary
+      }
+    }
+  }
+
+  frame ActionRow {
+    layout = horizontal
+    gap = tokens.spacing.md
+    alignment = center
+
+    instance RSVPButton of Button {
+      style = "primary"
+      label.content = "RSVP via Email (by Nov 1)"
+    }
+
+    instance DirectionsButton of Button {
+      style = "outline"
+      label.content = "Get Directions"
+    }
+  }
+}

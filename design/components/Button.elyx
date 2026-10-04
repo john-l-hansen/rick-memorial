@@ -1,0 +1,35 @@
+// Button.elyx - Lindy LaDow inspired button component
+
+import "../tokens.elyx" as tokens
+
+component Button {
+  variant style = "primary" // "primary" | "outline" | "secondary"
+
+  paddingHorizontal = tokens.spacing.lg
+  paddingVertical = tokens.spacing.md
+  cornerRadius = tokens.radii.sm
+  layout = horizontal
+  alignment = center
+  gap = tokens.spacing.xs
+
+  backgroundColor = match(style) {
+    "primary" => tokens.colors.primary900
+    "outline" => transparent
+    "secondary" => tokens.colors.primary100
+  }
+
+  border = match(style) {
+    "outline" => { width = 1, color = tokens.colors.primary700 }
+    default => none
+  }
+
+  text label {
+    style = tokens.typography.bodySmall
+    weight = 600
+    color = match(style) {
+      "primary" => tokens.colors.textLight
+      "outline" => tokens.colors.primary900
+      "secondary" => tokens.colors.primary900
+    }
+  }
+}

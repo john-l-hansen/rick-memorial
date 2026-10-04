@@ -1,0 +1,60 @@
+// PhotoGallery.elyx - Photo grid component for memorial tribute
+
+import "../tokens.elyx" as tokens
+
+component PhotoGallery {
+  layout = vertical
+  gap = tokens.spacing.lg
+  alignment = center
+
+  frame SectionHeading {
+    layout = vertical
+    gap = tokens.spacing.xs
+    alignment = center
+
+    text Tagline {
+      content = "MEMORIES & MOMENTS"
+      style = tokens.typography.eyebrow
+      color = tokens.colors.primary700
+    }
+
+    text Title {
+      content = "Remembering the Life He Lived"
+      style = tokens.typography.headingH2
+      color = tokens.colors.textPrimary
+    }
+  }
+
+  frame GridContainer {
+    layout = horizontal
+    gap = tokens.spacing.md
+    wrap = true
+
+    frame PhotoItem1 {
+      width = 360
+      height = 420
+      cornerRadius = tokens.radii.md
+      backgroundColor = tokens.colors.primary200
+      shadow = tokens.shadows.card
+      border = { width = 1, color = tokens.colors.borderSubtle }
+    }
+
+    frame PhotoItem2 {
+      width = 360
+      height = 420
+      cornerRadius = tokens.radii.md
+      backgroundColor = tokens.colors.primary200
+      shadow = tokens.shadows.card
+      border = { width = 1, color = tokens.colors.borderSubtle }
+    }
+
+    frame PhotoItem3 {
+      width = 360
+      height = 420
+      cornerRadius = tokens.radii.md
+      backgroundColor = tokens.colors.primary200
+      shadow = tokens.shadows.card
+      border = { width = 1, color = tokens.colors.borderSubtle }
+    }
+  }
+}

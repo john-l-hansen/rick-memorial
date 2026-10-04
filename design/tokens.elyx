@@ -1,36 +1,85 @@
-// tokens.elyx - Design Tokens for Rick's Memorial
+// tokens.elyx - Design Tokens derived from LindyLaDow.com brand system
 
 tokens {
   colors {
-    bgPrimary = #FDFCF7
-    bgCard = #FFFFFF
-    bgAccent = #F4EFE6
-    textPrimary = #1E293B
-    textSecondary = #64748B
-    textMuted = #94A3B8
-    accentWarm = #A47854
-    accentWarmDark = #835C3C
-    borderSubtle = #EAE4D9
+    // Brand Earth & Warm Tone Scale (matching lindyladow.com)
+    primary50  = #FAF8F6  // Warm Linen / Page Base
+    primary100 = #F4EFEC  // Soft Alabaster
+    primary200 = #EBE2DD  // Warm Sand
+    primary300 = #DDCDC4  // Warm Neutral
+    primary400 = #C7B0A2  // Soft Clay
+    primary500 = #B09280  // Muted Cocoa
+    primary600 = #9A7B68  // Warm Walnut Accent
+    primary700 = #806555  // Warm Timber Border/Accent
+    primary800 = #6B5649  // Rich Chestnut
+    primary900 = #5C4B40  // Deep Earth Primary
+    primary950 = #30251F  // Espresso Dark Accent
+    primary975 = #1F1814  // Midnight Espresso / Hero Dark
+
+    // Semantic Surface & Text Colors
+    bgCanvas     = #FAF8F6
+    bgSurface    = #FFFFFF
+    bgSecondary  = #F4EFEC
+    bgDarkHero   = #1F1814
+
+    textPrimary   = #1F1814
+    textSecondary = #5C4B40
+    textMuted     = #806555
+    textLight     = #FAF8F6
+
+    borderSubtle  = #EBE2DD
+    borderAccent  = #806555
   }
 
   typography {
-    fontSerif = "Playfair Display, Cormorant Garamond, serif"
-    fontSans = "Inter, -apple-system, BlinkMacSystemFont, sans-serif"
-    
-    titleHero = {
+    // Elegant Serif for emotional headers, clean sans for UI
+    fontSerif = "Cormorant Garamond, Georgia, serif"
+    fontSans  = "Inter, Cabin, -apple-system, sans-serif"
+
+    heroDisplay = {
       font = fontSerif
-      size = 38
-      weight = 700
+      size = 48
+      weight = 500
+      lineHeight = 1.15
+      letterSpacing = -0.5
+    }
+
+    headingH1 = {
+      font = fontSerif
+      size = 36
+      weight = 600
       lineHeight = 1.2
     }
-    
-    subtitle = {
-      font = fontSans
-      size = 14
+
+    headingH2 = {
+      font = fontSerif
+      size = 28
       weight = 600
-      letterSpacing = 1.5
+      lineHeight = 1.3
     }
-    
+
+    headingH3 = {
+      font = fontSerif
+      size = 22
+      weight = 600
+      lineHeight = 1.35
+    }
+
+    eyebrow = {
+      font = fontSans
+      size = 12
+      weight = 700
+      letterSpacing = 2.0
+      textTransform = uppercase
+    }
+
+    bodyLead = {
+      font = fontSans
+      size = 18
+      weight = 400
+      lineHeight = 1.6
+    }
+
     body = {
       font = fontSans
       size = 16
@@ -47,18 +96,27 @@ tokens {
   }
 
   spacing {
-    xs = 4
-    sm = 8
-    md = 16
-    lg = 24
-    xl = 32
+    xxs = 4
+    xs  = 8
+    sm  = 12
+    md  = 16
+    lg  = 24
+    xl  = 32
     xxl = 48
+    section = 64
   }
 
   radii {
-    sm = 4
-    md = 8
-    lg = 16
-    full = 9999
+    none = 0
+    sm   = 4
+    md   = 8
+    lg   = 16
+    pill = 9999
+  }
+
+  shadows {
+    subtle = "0 2px 8px rgba(48, 37, 31, 0.04)"
+    card   = "0 4px 20px -2px rgba(48, 37, 31, 0.07)"
+    elevated = "0 12px 32px -4px rgba(48, 37, 31, 0.12)"
   }
 }
