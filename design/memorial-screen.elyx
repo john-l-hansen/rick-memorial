@@ -1,0 +1,75 @@
+// memorial-screen.elyx - Memorial Page Design for Richard Earl LaDow Jr.
+
+import "./tokens.elyx" as tokens
+
+screen MemorialPage {
+  width = 1200
+  height = auto
+  backgroundColor = tokens.colors.bgPrimary
+
+  // Hero Section
+  frame HeroSection {
+    layout = vertical
+    alignment = center
+    padding = tokens.spacing.xxl
+    gap = tokens.spacing.md
+
+    text TributeHeader {
+      content = "A TRIBUTE TO RICK"
+      style = tokens.typography.subtitle
+      color = tokens.colors.accentWarm
+    }
+
+    text NameTitle {
+      content = "Richard Earl LaDow Jr."
+      style = tokens.typography.titleHero
+      color = tokens.colors.textPrimary
+    }
+
+    text LifeDates {
+      content = "October 5, 1957 — June 8, 2026"
+      style = tokens.typography.body
+      color = tokens.colors.textSecondary
+    }
+
+    text RolesSubtitle {
+      content = "HUSBAND — FATHER — PAPA — SON — BROTHER — UNCLE — FRIEND"
+      style = tokens.typography.subtitle
+      color = tokens.colors.accentWarmDark
+    }
+  }
+
+  // Event Details Card
+  frame EventCard {
+    layout = vertical
+    backgroundColor = tokens.colors.bgCard
+    cornerRadius = tokens.radii.lg
+    padding = tokens.spacing.xl
+    gap = tokens.spacing.md
+    borderColor = tokens.colors.borderSubtle
+
+    text EventTitle {
+      content = "Celebration of Life Gathering"
+      style = tokens.typography.titleHero
+      color = tokens.colors.textPrimary
+    }
+
+    text EventDate {
+      content = "Saturday, November 7, 2026\n11:00 a.m. — 3:00 p.m."
+      style = tokens.typography.body
+      color = tokens.colors.textPrimary
+    }
+
+    text EventVenue {
+      content = "Fraternal Order of Eagles — Azusa Aerie #2810\n1603 San Gabriel Canyon Road, Azusa, California 91702"
+      style = tokens.typography.body
+      color = tokens.colors.textSecondary
+    }
+
+    text EventRSVP {
+      content = "Kindly RSVP by November 1, 2026: ricksmemorialtribute11276@gmail.com"
+      style = tokens.typography.bodySmall
+      color = tokens.colors.accentWarm
+    }
+  }
+}
