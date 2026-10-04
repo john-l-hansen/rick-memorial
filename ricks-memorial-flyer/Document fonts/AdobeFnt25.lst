@@ -1,0 +1,84 @@
+%!Adobe-FontList 1.25
+%Locale:0x409
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:Invalid
+OutlineFileName:/Users/johnhansen/Desktop/4-ricks-memorial/ricks-memorial-flyer/Document fonts/AdobeFnt25.lst
+FileLength:1809
+FileModTime:812773166
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:CormorantGaramond-Italic
+FamilyName:Cormorant Garamond
+StyleName:Italic
+MenuName:Cormorant Garamond
+StyleBits:1
+WeightClass:400
+WidthClass:5
+AngleClass:1
+FullName:Cormorant Garamond Italic
+WritingScript:Roman
+OutlineFileName:/Users/johnhansen/Desktop/4-ricks-memorial/ricks-memorial-flyer/Document fonts/CormorantGaramond-Italic.ttf
+DataFormat:sfntData
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:413600
+FileModTime:685517230
+NameArray:0,Win,1,Cormorant Garamond
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:CormorantGaramond-Regular
+FamilyName:Cormorant Garamond
+StyleName:Regular
+MenuName:Cormorant Garamond
+StyleBits:0
+WeightClass:400
+WidthClass:5
+AngleClass:0
+FullName:Cormorant Garamond Regular
+WritingScript:Roman
+OutlineFileName:/Users/johnhansen/Desktop/4-ricks-memorial/ricks-memorial-flyer/Document fonts/CormorantGaramond-Regular.ttf
+DataFormat:sfntData
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:686664
+FileModTime:685517230
+NameArray:0,Win,1,Cormorant Garamond
+%EndFont
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:CormorantGaramond-SemiBold
+FamilyName:Cormorant Garamond
+StyleName:SemiBold
+MenuName:Cormorant Garamond SemiBold
+StyleBits:0
+WeightClass:600
+WidthClass:5
+AngleClass:0
+FullName:Cormorant Garamond SemiBold
+WritingScript:Roman
+OutlineFileName:/Users/johnhansen/Desktop/4-ricks-memorial/ricks-memorial-flyer/Document fonts/CormorantGaramond-SemiBold.ttf
+DataFormat:sfntData
+hasSVG:no
+hasSBIX:no
+hasCOLR:no
+VariableFontType:NonVariableFont
+FileLength:685732
+FileModTime:685517230
+NameArray:0,Win,1,Cormorant Garamond SemiBold
+NameArray:0,Win,16,Cormorant Garamond
+%EndFont
+
