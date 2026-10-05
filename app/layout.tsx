@@ -18,10 +18,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rick-ladow-memorial.vercel.app"),
+  metadataBase: new URL("https://rick-memorial.vercel.app"),
   title: "In Loving Memory — Richard Earl LaDow Jr. (1957 — 2026)",
   description:
     "A tribute to Rick: Richard Earl LaDow Jr. Celebrating his life, memories, and gathering details for his memorial on Saturday, November 7, 2026.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/rick-favicon.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/rick-favicon.png", sizes: "128x128", type: "image/png" },
+    ],
+  },
   openGraph: {
     title: "Richard Earl LaDow Jr. (1957 — 2026) — Memorial Tribute",
     description:
