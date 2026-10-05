@@ -1,8 +1,9 @@
-// tokens.elyx - Design Tokens derived from LindyLaDow.com brand system
+// tokens.elyx - Design Tokens derived from LindyLaDow.com
+// Symbolically inherited from the brand system of Rick's wife, Lindy LaDow, honoring their union.
 
 tokens {
   colors {
-    // Brand Earth & Warm Tone Scale (matching lindyladow.com)
+    // Brand Earth & Warm Tone Scale (symbolizing their shared visual harmony)
     primary50  = #FAF8F6  // Warm Linen / Page Base
     primary100 = #F4EFEC  // Soft Alabaster
     primary200 = #EBE2DD  // Warm Sand

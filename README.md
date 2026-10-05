@@ -50,7 +50,7 @@ flowchart LR
 
 1. **Design System & Visual Architecture ([Elyx](https://github.com/elyx-design/agents)):**
    - Pure, human-readable declarative design schemas (`.elyx`) storing color spaces, typographic hierarchies, responsive layout constraints, and component variants in git version control.
-   - Design tokens mathematically matched to the warm linen and earth-tone brand system of **[lindyladow.com](https://www.lindyladow.com/)** (`#FAF8F6` to `#1F1814`).
+   - Design tokens intentionally and symbolically inherited from the brand system of his wife, **Lindy LaDow** ([lindyladow.com](https://www.lindyladow.com/)), reflecting the warmth, harmony, and enduring bond of their union through a shared visual language (`#FAF8F6` linen through `#1F1814` espresso).
    - Bidirectional sync allowing real-time visual inspection in the Elyx runtime (`elyx.json`).
 
 2. **Agentic Development Pipeline ([Antigravity](https://github.com/john-l-hansen/rick-memorial)):**
