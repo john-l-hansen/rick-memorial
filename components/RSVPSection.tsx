@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Mail, Check, Copy, Send } from "lucide-react";
 
 export default function RSVPSection() {
-  const rsvpEmail = "ricksmemorialtribute11276@gmail.com";
+  const rsvpEmail = "ricksmemorialtribute11726@gmail.com";
   const [copied, setCopied] = useState(false);
   const [guestName, setGuestName] = useState("");
   const [attendeeCount, setAttendeeCount] = useState("1");

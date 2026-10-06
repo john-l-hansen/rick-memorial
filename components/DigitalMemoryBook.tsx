@@ -31,7 +31,7 @@ const initialStories: Story[] = [
 ];
 
 // Valid family passcodes (case-insensitive)
-const VALID_PASSCODES = ["ladow", "azusa", "eagles", "11276", "rick", "family", "rick2026"];
+const VALID_PASSCODES = ["ladow", "azusa", "eagles", "11726", "11276", "rick", "family", "rick2026"];
 
 export default function DigitalMemoryBook() {
   const [stories, setStories] = useState<Story[]>(initialStories);
@@ -190,7 +190,7 @@ export default function DigitalMemoryBook() {
               <Mail className="w-3.5 h-3.5" />
               <span>Need the code?</span>
               <a
-                href="mailto:ricksmemorialtribute11276@gmail.com?subject=Passcode%20Request%20for%20Rick's%20Memory%20Book"
+                href="mailto:ricksmemorialtribute11726@gmail.com?subject=Passcode%20Request%20for%20Rick's%20Memory%20Book"
                 className="underline hover:text-brand-900"
               >
                 Contact the family

@@ -73,7 +73,7 @@ flowchart LR
 | **Time** | **11:00 a.m. — 3:00 p.m.** |
 | **Location** | **Fraternal Order of Eagles — Azusa Aerie #2810**<br>1603 San Gabriel Canyon Road<br>Azusa, California 91702 |
 | **RSVP Deadline** | **November 1, 2026** |
-| **RSVP Contact** | [`ricksmemorialtribute11276@gmail.com`](mailto:ricksmemorialtribute11276@gmail.com) |
+| **RSVP Contact** | [`ricksmemorialtribute11726@gmail.com`](mailto:ricksmemorialtribute11726@gmail.com) |
 
 > *“We invite you to bring a favorite memory of Rick, written down or simply carried in your heart. There will be a special place to leave your written memories for our family to keep, and time to share stories together for those who would like to.”*
 

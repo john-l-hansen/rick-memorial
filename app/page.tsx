@@ -88,10 +88,10 @@ export default function MemorialPage() {
                   Kindly RSVP by November 1, 2026 if you plan on joining us:
                 </p>
                 <a
-                  href="mailto:ricksmemorialtribute11276@gmail.com?subject=RSVP%20for%20Rick's%20Memorial"
+                  href="mailto:ricksmemorialtribute11726@gmail.com?subject=RSVP%20for%20Rick's%20Memorial"
                   className="font-serif text-base sm:text-xl text-brand-950 underline hover:text-brand-700 transition-colors font-medium break-all"
                 >
-                  ricksmemorialtribute11276@gmail.com
+                  ricksmemorialtribute11726@gmail.com
                 </a>
               </div>
 

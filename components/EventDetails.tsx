@@ -29,7 +29,7 @@ export default function EventDetails() {
       "DTSTART:20261107T190000Z", // 11:00 AM PDT (UTC-8 / UTC-7)
       "DTEND:20261107T230000Z",   // 3:00 PM PDT
       "SUMMARY:Celebration of Life: Richard Earl LaDow Jr. (Rick)",
-      `DESCRIPTION:A gathering to celebrate Rick, remember the life he lived, and honor the memories he left with each of us.\\n\\nRSVP: ricksmemorialtribute11276@gmail.com`,
+      `DESCRIPTION:A gathering to celebrate Rick, remember the life he lived, and honor the memories he left with each of us.\\n\\nRSVP: ricksmemorialtribute11726@gmail.com`,
       `LOCATION:${venueName}, ${venueAddress}`,
       "STATUS:CONFIRMED",
       "END:VEVENT",
@@ -50,7 +50,7 @@ export default function EventDetails() {
   const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
     "Celebration of Life: Richard Earl LaDow Jr."
   )}&dates=20261107T180000Z/20261107T220000Z&details=${encodeURIComponent(
-    "A gathering to celebrate Rick, remember the life he lived, and honor his memory.\n\nRSVP: ricksmemorialtribute11276@gmail.com"
+    "A gathering to celebrate Rick, remember the life he lived, and honor his memory.\n\nRSVP: ricksmemorialtribute11726@gmail.com"
   )}&location=${encodeURIComponent(`${venueName}, ${venueAddress}`)}`;
 
   return (
