@@ -19,29 +19,42 @@ export MemorialScreen = frame {
     width: 100%,
 
     navbarLibrary.Navbar.navLinks {
-      navbarLibrary.Navbar.navLinks.linkMemories {
-        font-size: 12,
-        font-family: "Cabin",
-        font-style: "Regular"
-      }
-
-      navbarLibrary.Navbar.navLinks.linkPhotos {
-        font-size: 12,
-        font-family: "Cabin",
-        font-style: "Regular"
-      }
-
-      navbarLibrary.Navbar.navLinks.linkDetails {
-        font-size: 12,
-        font-family: "Cabin",
-        font-style: "Regular"
-      }
-
       navbarLibrary.Navbar.navLinks.rsvpBtn {
         navbarLibrary.Navbar.navLinks.rsvpBtn.rsvpLabel {
           font-family: "Cabin",
           font-style: "Regular"
         }
+      }
+
+      navbarLibrary.Navbar.navLinks.linkMemories {
+        font-size: 10,
+        font-family: "Cabin",
+        font-style: "Regular"
+      }
+
+      navbarLibrary.Navbar.navLinks.linkPhotos {
+        font-size: 10,
+        font-family: "Cabin",
+        font-style: "Regular"
+      }
+
+      navbarLibrary.Navbar.navLinks.linkDetails {
+        font-size: 10,
+        font-family: "Cabin",
+        font-style: "Regular"
+      }
+    }
+
+    navbarLibrary.Navbar.brandLink {
+      left: 32px,
+      top: 23px,
+      width: 175px,
+      height: 17px,
+
+      navbarLibrary.Navbar.brandLink.brandTitle {
+        font-size: 12,
+        font-style: "Medium",
+        letter-spacing: 5%
       }
     }
   }
