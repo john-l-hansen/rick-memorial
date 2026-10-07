@@ -120,12 +120,33 @@ export MemorialScreen = frame {
         eventDetailsCardLibrary.EventDetailsCard.sectionHeader.tagline {
           font-size: 10,
           font-family: "Cabin",
-          font-style: "Regular"
+          font-style: "Regular",
+          letter-spacing: 25%
         }
       }
     }
 
-    memoryBook = frame : memoryBookCardLibrary.MemoryBookCard {}
+    memoryBook = frame : memoryBookCardLibrary.MemoryBookCard {
+      memoryBookCardLibrary.MemoryBookCard.bookHeader {
+        memoryBookCardLibrary.MemoryBookCard.bookHeader.bookTag {
+          left: 290px,
+          top: 0px,
+          width: 200px,
+          height: 15px,
+          font-size: 10,
+          letter-spacing: 25%
+        }
+      }
+
+      memoryBookCardLibrary.MemoryBookCard.passcodeBox {
+        width: 100%,
+
+        memoryBookCardLibrary.MemoryBookCard.passcodeBox.pcDesc {
+          width: 100%,
+          line-height: 1.75
+        }
+      }
+    }
 
     rsvpSection = frame : rsvpCardLibrary.RSVPCard {
       rsvpCardLibrary.RSVPCard.formContainer {
