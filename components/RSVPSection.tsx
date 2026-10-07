@@ -61,7 +61,7 @@ export default function RSVPSection() {
               <Mail className="w-4 h-4 text-brand-400 shrink-0" />
               <a
                 href={mailtoLink}
-                className="text-brand-100 font-mono text-xs sm:text-sm hover:underline truncate"
+                className="text-brand-100 font-sans font-medium text-xs sm:text-sm hover:underline truncate"
               >
                 {rsvpEmail}
               </a>

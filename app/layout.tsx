@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Cabin } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -10,10 +10,11 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const inter = Inter({
+const cabin = Cabin({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cabin",
   display: "swap",
 });
 
@@ -46,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable} scroll-smooth`}>
+    <html lang="en" className={`${cormorant.variable} ${cabin.variable} scroll-smooth`}>
       <body className="font-sans bg-brand-50 text-brand-950 antialiased selection:bg-brand-200 selection:text-brand-950">
         {children}
       </body>

@@ -60,7 +60,7 @@ flowchart LR
 3. **Application & Edge Infrastructure:**
    - **Framework:** Next.js 14 App Router with fully static pre-rendering (SSG).
    - **Type Safety:** TypeScript 5.7 with strict type boundaries and isolated compilation.
-   - **Typography Engine:** Google Fonts (`next/font/google`) featuring zero-layout-shift `Cormorant Garamond` (display) and `Inter` (UI).
+   - **Typography Engine:** Google Fonts (`next/font/google`) featuring zero-layout-shift `Cormorant Garamond` (display) and `Cabin` (UI / sans).
    - **Interactive Tooling:** Client-side ICS calendar synthesis (iCal / Outlook / Google Calendar integration), interactive guestbook storage, and responsive photo lightbox viewer.
 
 ---

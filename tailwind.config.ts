@@ -26,7 +26,7 @@ const config: Config = {
       },
       fontFamily: {
         serif: ["var(--font-cormorant)", "Georgia", "serif"],
-        sans: ["var(--font-inter)", "Cabin", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        sans: ["var(--font-cabin)", "Cabin", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
       },
       boxShadow: {
         warm: "0 4px 20px -2px rgba(48, 37, 31, 0.07)",

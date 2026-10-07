@@ -49,5 +49,5 @@ export lengths = tokens {
 
 export typography = tokens {
   fontSerif: "Cormorant Garamond",
-  fontSans: "Inter"
+  fontSans: "Cabin"
 }
