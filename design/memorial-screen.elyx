@@ -37,14 +37,6 @@ export MemorialScreen = frame {
         font-family: "Cabin"
       }
 
-      linkPhotos {
-        contents: "PHOTOS",
-        font-size: 10,
-        font-style: "SemiBold",
-        letter-spacing: 20%,
-        font-family: "Cabin"
-      }
-
       linkDetails {
         contents: "SERVICE DETAILS",
         font-size: 10,
@@ -63,7 +55,7 @@ export MemorialScreen = frame {
       brandTitle {
         font-size: 12,
         font-family: "Cabin",
-        font-style: "Bold",
+        font-style: "SemiBold",
         letter-spacing: 25%
       }
     }

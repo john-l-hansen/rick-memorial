@@ -19,7 +19,7 @@ export Navbar = frame {
       contents: "RICHARD EARL LADOW JR.",
       font-size: 12,
       font-family: "Cabin",
-      font-style: "Bold",
+      font-style: "SemiBold",
       letter-spacing: 25%
     }
   }

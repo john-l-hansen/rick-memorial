@@ -6,15 +6,12 @@ export tributeScreen = frame : memorialScreen.MemorialScreen {
 
   topNav {
     navLinks {
-      linkMemories {
-        font-style: "Regular"
-      }
-
-      linkPhotos {
-        font-style: "Regular"
-      }
-
       linkDetails {
+        height: .auto,
+        font-style: "Regular"
+      }
+
+      linkMemories {
         font-style: "Regular"
       }
     }

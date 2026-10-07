@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Heart, Calendar, MessageSquare, Image, Mail } from "lucide-react";
+import { Heart, Calendar, MessageSquare, Mail } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -49,7 +49,7 @@ export default function Navbar() {
           className="flex items-center gap-2 text-brand-900 hover:text-brand-700 transition-colors group"
         >
           <Heart className="w-4 h-4 text-brand-600 fill-brand-200 group-hover:scale-110 transition-transform" />
-          <span className="font-serif text-lg tracking-wide uppercase font-medium">
+          <span className="font-sans text-[12px] font-semibold tracking-[0.25em] uppercase text-brand-950">
             Richard Earl LaDow Jr.
           </span>
         </a>
@@ -63,15 +63,8 @@ export default function Navbar() {
             Service Details
           </a>
           <a
-            href="#photos"
-            className="hover:text-brand-950 transition-colors flex items-center gap-1.5"
-          >
-            <Image className="w-3.5 h-3.5 text-brand-600" />
-            Photos
-          </a>
-          <a
             href="#memories"
-            className="hover:text-brand-950 transition-colors flex items-center gap-1.5"
+            className="hover:text-brand-950 transition-colors flex items-center gap-1.5 font-medium"
           >
             <MessageSquare className="w-3.5 h-3.5 text-brand-600" />
             Share a Memory
