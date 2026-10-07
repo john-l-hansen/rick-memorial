@@ -50,7 +50,7 @@ export Footer = frame {
   }
 
   footerCopyright = text {
-    fill: tokens.colors.brand400,
+    fill: tokens.colors.textSecondary,
     contents: "Created with deep love and cherished memories by Rick’s family.",
     font-size: 12,
     font-family: tokens.typography.fontSans
