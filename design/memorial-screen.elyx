@@ -91,7 +91,7 @@ export MemorialScreen = frame {
           }
         }
 
-        layout.item-gap: 16px,
+        layout.item-gap: 12px,
 
         eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.dateTimeCol {
           width: 100%,
@@ -106,6 +106,12 @@ export MemorialScreen = frame {
           eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.dateTimeCol.dtHeading {
             font-size: 14
           }
+        }
+      }
+
+      eventDetailsCardLibrary.EventDetailsCard.sectionHeader {
+        eventDetailsCardLibrary.EventDetailsCard.sectionHeader.tagline {
+          font-size: 10
         }
       }
     }
