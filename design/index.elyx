@@ -117,6 +117,26 @@ export tributeScreen = frame : memorialScreen.MemorialScreen {
         letter-spacing: 25%
       }
     }
+
+    navLinks {
+      linkMemories {
+        contents: "SHARE A MEMORY",
+        font-style: "SemiBold",
+        letter-spacing: 20%
+      }
+
+      linkPhotos {
+        contents: "PHOTOS",
+        font-style: "SemiBold",
+        letter-spacing: 20%
+      }
+
+      linkDetails {
+        contents: "SERVICE DETAILS",
+        font-style: "SemiBold",
+        letter-spacing: 20%
+      }
+    }
   }
 
   layer1 = frame {
