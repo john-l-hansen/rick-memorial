@@ -64,7 +64,6 @@ export MemorialScreen = frame {
     left: 0px,
     top: 63px,
     width: 1200px,
-    height: 2651px,
     layout: {direction: .column, align-items: .center, item-gap: 48px},
     padding: [48px, 0px, 64px],
     children: [framedFlyer, gatheringDetails, memoryBook, rsvpSection],
@@ -84,8 +83,10 @@ export MemorialScreen = frame {
 
     gatheringDetails = frame : eventDetailsCardLibrary.EventDetailsCard {
       eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow {
+        layout.item-gap: 16px,
+
         eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.locationCol {
-          width: 100%,
+          width: 388px,
 
           eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.locationCol.locVenue {
             font-size: 14,
@@ -98,11 +99,8 @@ export MemorialScreen = frame {
           }
         }
 
-        layout.item-gap: 12px,
-
         eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.dateTimeCol {
-          width: 100%,
-          height: 100%,
+          width: 388px,
 
           eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.dateTimeCol.dtDate {
             font-size: 14,

@@ -50,7 +50,7 @@ export EventDetailsCard = frame {
       corner-radius: tokens.lengths.radius-sm,
       fill: tokens.colors.brand50,
       border: { width: 1px, color: tokens.colors.brand100 },
-      layout: { direction: .column, item-gap: 8px },
+      layout: { direction: .column, item-gap: 12px },
       children: [dtHeading, dtDate, dtTime, dtActionsRow],
 
       dtHeading = text {
@@ -83,6 +83,7 @@ export EventDetailsCard = frame {
           padding: [8px, 14px],
           corner-radius: tokens.lengths.radius-sm,
           fill: tokens.colors.brand900,
+          layout: { direction: .row, align-items: .center, justify-content: .center },
           children: [gcalLabel],
           gcalLabel = text {
             contents: "Add to Google Calendar",
@@ -96,6 +97,7 @@ export EventDetailsCard = frame {
           padding: [8px, 14px],
           corner-radius: tokens.lengths.radius-sm,
           fill: tokens.colors.brand200,
+          layout: { direction: .row, align-items: .center, justify-content: .center },
           children: [icalLabel],
           icalLabel = text {
             contents: "iCal / Outlook",
@@ -113,7 +115,7 @@ export EventDetailsCard = frame {
       corner-radius: tokens.lengths.radius-sm,
       fill: tokens.colors.brand50,
       border: { width: 1px, color: tokens.colors.brand100 },
-      layout: { direction: .column, item-gap: 8px },
+      layout: { direction: .column, item-gap: 12px },
       children: [locHeading, locVenue, locAddress, locActionsRow],
 
       locHeading = text {
@@ -146,6 +148,7 @@ export EventDetailsCard = frame {
           padding: [8px, 14px],
           corner-radius: tokens.lengths.radius-sm,
           fill: tokens.colors.brand700,
+          layout: { direction: .row, align-items: .center, justify-content: .center },
           children: [gmapsLabel],
           gmapsLabel = text {
             contents: "Google Maps",
@@ -159,6 +162,7 @@ export EventDetailsCard = frame {
           padding: [8px, 14px],
           corner-radius: tokens.lengths.radius-sm,
           fill: tokens.colors.brand200,
+          layout: { direction: .row, align-items: .center, justify-content: .center },
           children: [appleMapsLabel],
           appleMapsLabel = text {
             contents: "Apple Maps",

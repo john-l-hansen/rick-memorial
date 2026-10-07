@@ -71,6 +71,7 @@ export RSVPCard = frame {
       padding: [4px, 10px],
       corner-radius: tokens.lengths.radius-xs,
       fill: tokens.colors.brand800,
+      layout: { direction: .row, align-items: .center, justify-content: .center },
       children: [copyLabel],
       copyLabel = text {
         contents: "Copy Email",
@@ -112,6 +113,7 @@ export RSVPCard = frame {
       corner-radius: tokens.lengths.radius-sm,
       fill: tokens.colors.brand950,
       border: { width: 1px, color: tokens.colors.brand700 },
+      layout: { direction: .row, align-items: .center },
       children: [namePlaceholder],
       namePlaceholder = text {
         contents: "Your Name(s) * (e.g. John & Jane Doe)",
@@ -127,6 +129,7 @@ export RSVPCard = frame {
       corner-radius: tokens.lengths.radius-sm,
       fill: tokens.colors.brand950,
       border: { width: 1px, color: tokens.colors.brand700 },
+      layout: { direction: .row, align-items: .center },
       children: [emailPlaceholder],
       emailPlaceholder = text {
         contents: "Your Email Address (Any provider welcome)",
@@ -142,6 +145,7 @@ export RSVPCard = frame {
       corner-radius: tokens.lengths.radius-sm,
       fill: tokens.colors.brand950,
       border: { width: 1px, color: tokens.colors.brand700 },
+      layout: { direction: .row, align-items: .center },
       children: [attendeesVal],
       attendeesVal = text {
         contents: "Number of Attendees: 1 Person",
@@ -158,6 +162,7 @@ export RSVPCard = frame {
       corner-radius: tokens.lengths.radius-sm,
       fill: tokens.colors.brand950,
       border: { width: 1px, color: tokens.colors.brand700 },
+      layout: { direction: .row, align-items: .start },
       children: [notePlaceholder],
       notePlaceholder = text {
         contents: "A Note for the Family (Optional)...",
@@ -195,6 +200,7 @@ export RSVPCard = frame {
         corner-radius: tokens.lengths.radius-sm,
         fill: tokens.colors.brand950,
         border: { width: 1px, color: tokens.colors.brand700 },
+        layout: { direction: .row, align-items: .center, justify-content: .center },
         children: [yahooLabel],
         yahooLabel = text {
           contents: "Yahoo Mail",
@@ -209,6 +215,7 @@ export RSVPCard = frame {
         corner-radius: tokens.lengths.radius-sm,
         fill: tokens.colors.brand950,
         border: { width: 1px, color: tokens.colors.brand700 },
+        layout: { direction: .row, align-items: .center, justify-content: .center },
         children: [outlookLabel],
         outlookLabel = text {
           contents: "Outlook / Hotmail",
@@ -223,6 +230,7 @@ export RSVPCard = frame {
         corner-radius: tokens.lengths.radius-sm,
         fill: tokens.colors.brand950,
         border: { width: 1px, color: tokens.colors.brand700 },
+        layout: { direction: .row, align-items: .center, justify-content: .center },
         children: [gmailLabel],
         gmailLabel = text {
           contents: "Gmail",
@@ -237,6 +245,7 @@ export RSVPCard = frame {
         corner-radius: tokens.lengths.radius-sm,
         fill: tokens.colors.brand950,
         border: { width: 1px, color: tokens.colors.brand700 },
+        layout: { direction: .row, align-items: .center, justify-content: .center },
         children: [appleLabel],
         appleLabel = text {
           contents: "Apple / Other App",
