@@ -1,14 +1,6 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Cabin } from "next/font/google";
+import { Cabin } from "next/font/google";
 import "./globals.css";
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-cormorant",
-  display: "swap",
-});
 
 const cabin = Cabin({
   subsets: ["latin"],
@@ -47,7 +39,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${cabin.variable} scroll-smooth`}>
+    <html lang="en" className={`${cabin.variable} scroll-smooth`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="font-sans bg-brand-50 text-brand-950 antialiased selection:bg-brand-200 selection:text-brand-950">
         {children}
       </body>
