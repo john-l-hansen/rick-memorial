@@ -1,63 +1,73 @@
-import "../tokens.elyx" as tokens
+import "design/tokens.elyx" as tokens
 
 export Navbar = frame {
-  name: "Navbar",
   left: 0px,
   top: 0px,
   width: 1200px,
-  padding: [16px, 32px],
-  layout: { direction: .row, justify-content: .space-between, align-items: .center },
+  layout: {justify-content: .space-between, align-items: .center},
   fill: tokens.colors.bgCanvas,
-  border: { width: 1px, color: tokens.colors.borderSubtle, sides: [.bottom] },
+  border: {color: tokens.colors.borderSubtle, sides: .bottom},
+  padding: [16px, 32px],
   children: [brandLink, navLinks],
 
   brandLink = frame {
-    layout: { direction: .row, align-items: .center, item-gap: 8px },
-    children: [brandTitle],
+    layout: {align-items: .center, item-gap: 8px},
+    children: brandTitle,
+
     brandTitle = text {
+      fill: tokens.colors.brand950,
       contents: "RICHARD EARL LADOW JR.",
-      font-size: 18,
-      font-family: tokens.typography.fontSerif,
-      fill: tokens.colors.brand950
+      font-size: 12,
+      font-family: "Cabin",
+      font-style: "SemiBold",
+      letter-spacing: 25%
     }
-  },
+  }
 
   navLinks = frame {
-    layout: { direction: .row, align-items: .center, item-gap: 24px },
+    layout: {align-items: .center, item-gap: 24px},
     children: [linkDetails, linkPhotos, linkMemories, rsvpBtn],
 
     linkDetails = text {
-      contents: "Service Details",
-      font-size: 14,
+      left: 0px,
+      top: 7px,
+      width: 87px,
+      height: 17px,
+      fill: tokens.colors.brand800,
+      contents: "SERVICE",
+      font-size: 12,
       font-family: tokens.typography.fontSans,
-      fill: tokens.colors.brand800
-    },
+      letter-spacing: 15%
+    }
 
     linkPhotos = text {
-      contents: "Photos",
-      font-size: 14,
+      fill: tokens.colors.brand800,
+      contents: "PHTOTOS",
+      font-size: 12,
       font-family: tokens.typography.fontSans,
-      fill: tokens.colors.brand800
-    },
+      letter-spacing: 15%
+    }
 
     linkMemories = text {
-      contents: "Share a Memory",
-      font-size: 14,
+      fill: tokens.colors.brand800,
+      contents: "SHARE A MEMORY",
+      font-size: 12,
       font-family: tokens.typography.fontSans,
-      fill: tokens.colors.brand800
-    },
+      letter-spacing: 15%
+    }
 
     rsvpBtn = frame {
-      padding: [8px, 16px],
-      corner-radius: tokens.lengths.radius-sm,
+      layout: {justify-content: .center, align-items: .center},
       fill: tokens.colors.brand900,
-      layout: { direction: .row, align-items: .center, justify-content: .center },
-      children: [rsvpLabel],
+      corner-radius: tokens.lengths.radius-sm,
+      padding: [8px, 16px],
+      children: rsvpLabel,
+
       rsvpLabel = text {
+        fill: tokens.colors.textLight,
         contents: "RSVP",
         font-size: 12,
-        font-family: tokens.typography.fontSans,
-        fill: tokens.colors.textLight
+        font-family: tokens.typography.fontSans
       }
     }
   }

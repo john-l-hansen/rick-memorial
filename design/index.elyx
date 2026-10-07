@@ -4,6 +4,22 @@ export tributeScreen = frame : memorialScreen.MemorialScreen {
   left: 40px,
   top: 40px,
 
+  topNav {
+    navLinks {
+      linkMemories {
+        font-style: "Regular"
+      }
+
+      linkPhotos {
+        font-style: "Regular"
+      }
+
+      linkDetails {
+        font-style: "Regular"
+      }
+    }
+  }
+
   bottomFooter {
     footerCopyright {
       fill[0].opacity: .nil,
