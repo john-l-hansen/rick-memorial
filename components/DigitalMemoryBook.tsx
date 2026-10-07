@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { MessageSquare, Heart, Send, Sparkles, Lock, Unlock, KeyRound, Mail } from "lucide-react";
+import { MessageSquare, Heart, Send, Lock, Unlock, KeyRound, Mail } from "lucide-react";
+import MemoryThankYouModal from "@/components/MemoryThankYouModal";
 
 interface Story {
   id: string;
@@ -11,24 +12,7 @@ interface Story {
   date: string;
 }
 
-const initialStories: Story[] = [
-  {
-    id: "1",
-    author: "Family & Loved Ones",
-    relationship: "Family",
-    message:
-      "Rick's warmth, ready smile, and huge heart touched everyone in the room. He was truly a loving brother to all, always there to lend a hand or share a laugh.",
-    date: "June 2026",
-  },
-  {
-    id: "2",
-    author: "Friends from Azusa",
-    relationship: "Friend",
-    message:
-      "Never missed a chance to tell a great story or make someone smile. Rick had a rare gift of making every person feel welcomed and appreciated.",
-    date: "June 2026",
-  },
-];
+const initialStories: Story[] = [];
 
 // Valid family passcodes (case-insensitive)
 const VALID_PASSCODES = ["ladow", "azusa", "eagles", "11726", "11276", "rick", "family", "rick2026"];
@@ -42,7 +26,8 @@ export default function DigitalMemoryBook() {
   const [author, setAuthor] = useState("");
   const [relationship, setRelationship] = useState("");
   const [message, setMessage] = useState("");
-  const [showThankYou, setShowThankYou] = useState(false);
+  const [showThankYouModal, setShowThankYouModal] = useState(false);
+  const [lastAuthor, setLastAuthor] = useState("");
 
   useEffect(() => {
     try {
@@ -118,15 +103,22 @@ export default function DigitalMemoryBook() {
       // ignore
     }
 
+    setLastAuthor(author.trim());
     setAuthor("");
     setRelationship("");
     setMessage("");
-    setShowThankYou(true);
-    setTimeout(() => setShowThankYou(false), 5000);
+    setShowThankYouModal(true);
   };
 
   return (
     <section id="memories" className="scroll-mt-24">
+      {/* Thank You Modal with Dog Animation */}
+      <MemoryThankYouModal
+        isOpen={showThankYouModal}
+        onClose={() => setShowThankYouModal(false)}
+        authorName={lastAuthor}
+      />
+
       <div className="bg-white rounded-lg border border-brand-200/90 shadow-warm p-6 sm:p-10">
         <div className="text-center max-w-xl mx-auto mb-8">
           <span className="text-xs font-semibold tracking-widest text-brand-700 uppercase font-sans">
@@ -273,37 +265,42 @@ export default function DigitalMemoryBook() {
               <Send className="w-3.5 h-3.5" />
               Add to Memory Book
             </button>
-
-            {showThankYou && (
-              <div className="mt-3 p-3 bg-brand-200/60 text-brand-900 rounded text-sm text-center flex items-center justify-center gap-2">
-                <Sparkles className="w-4 h-4 text-brand-700" />
-                Thank you for sharing your beautiful memory of Rick.
-              </div>
-            )}
           </form>
         )}
 
-        {/* List of Stories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
-          {stories.map((s) => (
-            <div
-              key={s.id}
-              className="p-5 rounded-md bg-brand-50/50 border border-brand-200/70 hover:border-brand-300 transition-colors flex flex-col justify-between"
-            >
-              <p className="text-brand-900 font-serif text-base leading-relaxed mb-4 italic">
-                “{s.message}”
-              </p>
-              <div className="flex items-center justify-between pt-3 border-t border-brand-200/60 text-xs text-brand-700">
-                <div className="flex items-center gap-1.5">
-                  <Heart className="w-3.5 h-3.5 text-brand-600 fill-brand-200" />
-                  <span className="font-semibold text-brand-900">{s.author}</span>
-                  <span className="text-brand-500">• {s.relationship}</span>
+        {/* List of Stories or Empty State */}
+        {stories.length === 0 ? (
+          <div className="text-center py-10 px-4 bg-brand-50/40 rounded-lg border border-dashed border-brand-200/90 max-w-xl mx-auto">
+            <Heart className="w-6 h-6 text-brand-400 mx-auto mb-2" />
+            <p className="font-serif italic text-base sm:text-lg text-brand-900 mb-1">
+              No memories shared yet.
+            </p>
+            <p className="text-xs sm:text-sm text-brand-600 font-sans">
+              Be the first to share a favorite story, laugh, or message of comfort for Rick’s family.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+            {stories.map((s) => (
+              <div
+                key={s.id}
+                className="p-5 rounded-md bg-brand-50/50 border border-brand-200/70 hover:border-brand-300 transition-colors flex flex-col justify-between"
+              >
+                <p className="text-brand-900 font-serif text-base leading-relaxed mb-4 italic">
+                  “{s.message}”
+                </p>
+                <div className="flex items-center justify-between pt-3 border-t border-brand-200/60 text-xs text-brand-700">
+                  <div className="flex items-center gap-1.5">
+                    <Heart className="w-3.5 h-3.5 text-brand-600 fill-brand-200" />
+                    <span className="font-semibold text-brand-900">{s.author}</span>
+                    <span className="text-brand-500">• {s.relationship}</span>
+                  </div>
+                  <span>{s.date}</span>
                 </div>
-                <span>{s.date}</span>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
