@@ -65,6 +65,49 @@ flowchart LR
 
 ---
 
+## Antigravity + Elyx Integration (vs. Default Agents)
+
+Rather than relying on default standalone agent harnesses or generic code generators, this repository uses **Google DeepMind's Antigravity** paired with a custom **Elyx Workspace Skill** (`.agents/skills/elyx/`) and **Elyx MCP (Model Context Protocol) Server**.
+
+### Why Antigravity + Custom Elyx Skill?
+
+| Dimension | Default Agents | Antigravity + Elyx Skill |
+| :--- | :--- | :--- |
+| **Context Awareness** | Isolated single-file scope without awareness of the active Next.js codebase. | Full workspace context linking `.elyx` design tokens directly to Tailwind config and React components. |
+| **Validation Loop** | Static generation without automated syntax or rendering verification. | Active in-loop verification using `elyx diagnostics` (0 error/0 warning enforcement) and `elyx render`. |
+| **Design Integrity** | Approximate CSS translations often causing design-to-code drift. | Strict declarative token inheritance from Lindy LaDow's brand palette with automated mathematical alignment. |
+| **Tool Integration** | Limited to basic file writes. | Deep integration via Elyx MCP tools (`elyx_inspect`, `elyx_diagnostics`, `elyx_render`, `elyx_format`) and subagent orchestration. |
+
+### How the Workflow Operates
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Dev as Developer
+    participant AGY as Antigravity Engine
+    participant Skill as Elyx Workspace Skill (.agents/skills/elyx)
+    participant MCP as Elyx MCP & CLI
+    participant Design as Design Files (.elyx)
+    participant Web as Next.js Web App
+
+    Dev->>AGY: Request layout/style enhancement
+    AGY->>Skill: Load schema guidelines & auto-layout rules
+    AGY->>Design: Update declarative .elyx canvas / components
+    AGY->>MCP: Run diagnostics & high-res visual render
+    MCP-->>AGY: Diagnostics pass (0 errors, 0 warnings) + rendered preview
+    AGY->>Web: Synchronize tailwind.config.ts & React components
+    AGY-->>Dev: Verified atomic design-to-code update
+```
+
+1. **Workspace Skill Specification (`.agents/skills/elyx/SKILL.md`)**:
+   - Instructs Antigravity on Elyx language semantics: token groupings (`export colors = tokens { ... }`), flexbox-equivalent auto-layouts (`layout: { direction: .row | .column, item-gap: ... }`), and coordinate isolation for component variants.
+2. **Real-time Diagnostic Verification**:
+   - Every modification to `.elyx` files is verified by Antigravity executing `elyx diagnostics` before committing changes to eliminate syntax or constraint regressions.
+3. **Unified Single-Session Workflow**:
+   - Changes to typography, double-border flyer geometry, or responsive spacing are executed across both `.elyx` design files and Next.js frontend code in a single turn.
+
+---
+
 ## Celebration of Life Service Details
 
 | Detail | Information |
