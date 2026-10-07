@@ -19,7 +19,7 @@ export Navbar = frame {
       contents: "RICHARD EARL LADOW JR.",
       font-size: 12,
       font-family: "Cabin",
-      font-style: "SemiBold",
+      font-style: "Bold",
       letter-spacing: 25%
     }
   }
@@ -31,20 +31,22 @@ export Navbar = frame {
     linkDetails = text {
       left: 0px,
       top: 7px,
-      width: 87px,
+      width: .auto,
       height: 17px,
       fill: tokens.colors.brand800,
       contents: "SERVICE",
       font-size: 12,
       font-family: tokens.typography.fontSans,
+      font-style: "SemiBold",
       letter-spacing: 15%
     }
 
     linkPhotos = text {
       fill: tokens.colors.brand800,
-      contents: "PHTOTOS",
+      contents: "PHOTOS",
       font-size: 12,
       font-family: tokens.typography.fontSans,
+      font-style: "SemiBold",
       letter-spacing: 15%
     }
 
@@ -53,6 +55,7 @@ export Navbar = frame {
       contents: "SHARE A MEMORY",
       font-size: 12,
       font-family: tokens.typography.fontSans,
+      font-style: "SemiBold",
       letter-spacing: 15%
     }
 
@@ -67,7 +70,9 @@ export Navbar = frame {
         fill: tokens.colors.textLight,
         contents: "RSVP",
         font-size: 12,
-        font-family: tokens.typography.fontSans
+        font-family: tokens.typography.fontSans,
+        font-style: "Bold",
+        letter-spacing: 10%
       }
     }
   }
