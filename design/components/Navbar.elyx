@@ -26,7 +26,7 @@ export Navbar = frame {
 
   navLinks = frame {
     layout: {align-items: .center, item-gap: 24px},
-    children: [linkDetails, linkPhotos, linkMemories, rsvpBtn],
+    children: [linkDetails, linkMemories, rsvpBtn],
 
     linkDetails = text {
       left: 0px,
@@ -35,15 +35,6 @@ export Navbar = frame {
       height: 17px,
       fill: tokens.colors.brand800,
       contents: "SERVICE",
-      font-size: 12,
-      font-family: tokens.typography.fontSans,
-      font-style: "SemiBold",
-      letter-spacing: 15%
-    }
-
-    linkPhotos = text {
-      fill: tokens.colors.brand800,
-      contents: "PHOTOS",
       font-size: 12,
       font-family: tokens.typography.fontSans,
       font-style: "SemiBold",
