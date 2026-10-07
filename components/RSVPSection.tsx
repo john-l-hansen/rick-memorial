@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Check, Copy, Send, ExternalLink } from "lucide-react";
+import { Mail, Check, Copy, Send, ExternalLink, Loader2, AlertCircle } from "lucide-react";
 
 export default function RSVPSection() {
   const rsvpEmail = "ricksmemorialtribute11726@gmail.com";
@@ -10,7 +10,9 @@ export default function RSVPSection() {
   const [guestEmail, setGuestEmail] = useState("");
   const [attendeeCount, setAttendeeCount] = useState("1");
   const [guestNote, setGuestNote] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(rsvpEmail);
@@ -28,10 +30,39 @@ export default function RSVPSection() {
   const yahooWebLink = `https://compose.mail.yahoo.com/?to=${rsvpEmail}&subj=${subject}&body=${body}`;
   const outlookWebLink = `https://outlook.live.com/mail/0/deeplink/compose?to=${rsvpEmail}&subject=${subject}&body=${body}`;
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = mailtoLink;
-    setSubmitted(true);
+    if (status === "sending") return;
+    setStatus("sending");
+    setErrorMessage("");
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "rsvp",
+          name: guestName,
+          email: guestEmail,
+          count: attendeeCount,
+          note: guestNote,
+          website: honeypot,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      setStatus("sent");
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : "Something went wrong.");
+      setStatus("error");
+    }
+  };
+
+  const resetForm = () => {
+    setGuestName("");
+    setGuestEmail("");
+    setAttendeeCount("1");
+    setGuestNote("");
+    setStatus("idle");
   };
 
   return (
@@ -95,10 +126,40 @@ export default function RSVPSection() {
               Send Your RSVP
             </h3>
             <p className="text-xs text-brand-400 text-center mb-6">
-              Fill in your details below and choose how to send your message
+              Fill in your details below and we&apos;ll pass your RSVP along to the family
             </p>
 
+            {status === "sent" ? (
+              <div className="py-6 text-center">
+                <div className="w-12 h-12 bg-brand-800 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Check className="w-6 h-6 text-green-400" />
+                </div>
+                <p className="font-serif text-lg text-brand-100 mb-1">Thank you, {guestName.trim() || "friend"}.</p>
+                <p className="text-sm text-brand-300 mb-5">Your RSVP has been sent to the family.</p>
+                <button
+                  type="button"
+                  onClick={resetForm}
+                  className="text-xs text-brand-300 hover:text-white underline transition-colors"
+                >
+                  Send another RSVP
+                </button>
+              </div>
+            ) : (
             <div className="space-y-4">
+              {/* Honeypot field for bots; hidden from people and screen readers */}
+              <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                <label>
+                  Website
+                  <input
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </label>
+              </div>
+
               <div>
                 <label className="block text-xs font-semibold text-brand-300 uppercase tracking-wider mb-1.5">
                   Your Name(s) *
@@ -156,19 +217,36 @@ export default function RSVPSection() {
                 />
               </div>
 
-              {/* Primary Send Button (Opens user's default email app) */}
+              {/* Primary Send Button (sends directly to the family's inbox) */}
               <button
                 type="submit"
-                className="w-full mt-2 py-3 bg-brand-100 text-brand-950 font-semibold rounded hover:bg-white transition-colors text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md cursor-pointer"
+                disabled={status === "sending"}
+                className="w-full mt-2 py-3 bg-brand-100 text-brand-950 font-semibold rounded hover:bg-white transition-colors text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md cursor-pointer disabled:opacity-70 disabled:cursor-wait"
               >
-                <Send className="w-4 h-4" />
-                Open Email &amp; Send RSVP
+                {status === "sending" ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Sending…
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Send RSVP
+                  </>
+                )}
               </button>
+
+              {status === "error" && (
+                <div role="alert" className="p-3 bg-brand-950/80 border border-red-400/40 rounded text-center text-xs text-brand-200">
+                  <AlertCircle className="w-4 h-4 text-red-300 inline mr-1.5" />
+                  {errorMessage} Please try again, or send it from your own email using the buttons below.
+                </div>
+              )}
 
               {/* Webmail Quick-Compose Options for users on Yahoo, Outlook, Gmail, etc. */}
               <div className="pt-4 border-t border-brand-800/80 text-center">
                 <p className="text-[11px] text-brand-400 uppercase tracking-wider mb-2">
-                  Or compose directly in your webmail service:
+                  Prefer to send from your own email?
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-2">
                   <a
@@ -209,11 +287,6 @@ export default function RSVPSection() {
               </div>
             </div>
 
-            {submitted && (
-              <div className="mt-4 p-3 bg-brand-950/80 border border-brand-700 rounded text-center text-xs text-brand-200">
-                <Check className="w-4 h-4 text-green-400 inline mr-1.5" />
-                Opening your email message. If your email app didn't open, use the webmail buttons above or email us directly at <strong className="text-white">{rsvpEmail}</strong>.
-              </div>
             )}
           </form>
         </div>

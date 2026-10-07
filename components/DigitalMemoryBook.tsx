@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { MessageSquare, Heart, Send, Lock, Unlock, KeyRound, Mail } from "lucide-react";
+import { MessageSquare, Heart, Send, Lock, Unlock, KeyRound, Mail, Loader2, AlertCircle } from "lucide-react";
 import MemoryThankYouModal from "@/components/MemoryThankYouModal";
 
 interface Story {
@@ -28,6 +28,9 @@ export default function DigitalMemoryBook() {
   const [message, setMessage] = useState("");
   const [showThankYouModal, setShowThankYouModal] = useState(false);
   const [lastAuthor, setLastAuthor] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   useEffect(() => {
     try {
@@ -83,9 +86,34 @@ export default function DigitalMemoryBook() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!author.trim() || !message.trim()) return;
+    if (sending || !author.trim() || !message.trim()) return;
+
+    setSending(true);
+    setSendError("");
+    try {
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "memory",
+          name: author,
+          relationship,
+          message,
+          website: honeypot,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+    } catch (err) {
+      setSendError(
+        `${err instanceof Error ? err.message : "Something went wrong."} Your message wasn't sent yet — please try again.`
+      );
+      setSending(false);
+      return;
+    }
+    setSending(false);
 
     const newStory: Story = {
       id: Date.now().toString(),
@@ -216,6 +244,20 @@ export default function DigitalMemoryBook() {
               </div>
             </div>
 
+            {/* Honeypot field for bots; hidden from people and screen readers */}
+            <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+              <label>
+                Website
+                <input
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </label>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               <div>
                 <label className="block text-xs font-semibold text-brand-800 uppercase tracking-wider mb-1">
@@ -258,12 +300,29 @@ export default function DigitalMemoryBook() {
               />
             </div>
 
+            {sendError && (
+              <div role="alert" className="mb-3 p-3 bg-white border border-red-300 rounded text-xs text-brand-900">
+                <AlertCircle className="w-4 h-4 text-red-600 inline mr-1.5" />
+                {sendError}
+              </div>
+            )}
+
             <button
               type="submit"
-              className="w-full sm:w-auto px-6 py-2.5 bg-brand-900 text-brand-50 rounded text-xs font-semibold uppercase tracking-wider hover:bg-brand-950 transition-colors flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+              disabled={sending}
+              className="w-full sm:w-auto px-6 py-2.5 bg-brand-900 text-brand-50 rounded text-xs font-semibold uppercase tracking-wider hover:bg-brand-950 transition-colors flex items-center justify-center gap-2 shadow-sm cursor-pointer disabled:opacity-70 disabled:cursor-wait"
             >
-              <Send className="w-3.5 h-3.5" />
-              Add to Memory Book
+              {sending ? (
+                <>
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  Sending…
+                </>
+              ) : (
+                <>
+                  <Send className="w-3.5 h-3.5" />
+                  Add to Memory Book
+                </>
+              )}
             </button>
           </form>
         )}
