@@ -1,187 +1,113 @@
-// memorial-screen.elyx - Complete Memorial Screen honoring Richard Earl LaDow Jr.
+import "design/tokens.elyx" as tokens
+import "design/components/Navbar.elyx" as navbarLibrary
+import "design/components/FlyerCard.elyx" as flyerCardLibrary
+import "design/components/EventDetailsCard.elyx" as eventDetailsCardLibrary
+import "design/components/MemoryBookCard.elyx" as memoryBookCardLibrary
+import "design/components/RSVPCard.elyx" as rsvpCardLibrary
+import "design/components/Footer.elyx" as footerLibrary
 
-import "./tokens.elyx" as tokens
-import "./components/Button.elyx" as Button
-import "./components/EventDetailsCard.elyx" as EventDetailsCard
-import "./components/PhotoGallery.elyx" as PhotoGallery
+export MemorialScreen = frame {
+  left: 0px,
+  top: 0px,
+  width: 1200px,
+  layout: {direction: .column, align-items: .center},
+  fill: tokens.colors.bgCanvas,
+  children: [topNav, mainContentStack, bottomFooter],
 
-screen MemorialScreen {
-  width = 1280
-  height = auto
-  backgroundColor = tokens.colors.bgCanvas
+  // 1. Navigation Bar
+  topNav = frame : navbarLibrary.Navbar {
+    width: 100%,
 
-  // 1. Navigation / Top Bar
-  frame TopNav {
-    width = 100%
-    paddingHorizontal = tokens.spacing.xl
-    paddingVertical = tokens.spacing.md
-    layout = horizontal
-    justify = space-between
-    alignment = center
-    borderBottom = { width = 1, color = tokens.colors.borderSubtle }
-    backgroundColor = tokens.colors.bgSurface
-
-    text SiteBrand {
-      content = "IN LOVING MEMORY"
-      style = tokens.typography.eyebrow
-      color = tokens.colors.primary700
-    }
-
-    frame NavLinks {
-      layout = horizontal
-      gap = tokens.spacing.lg
-      
-      text LinkService {
-        content = "Service Details"
-        style = tokens.typography.bodySmall
-        color = tokens.colors.textSecondary
+    navbarLibrary.Navbar.navLinks {
+      navbarLibrary.Navbar.navLinks.linkMemories {
+        font-size: 12,
+        font-family: "Cabin",
+        font-style: "Regular"
       }
-      text LinkStory {
-        content = "Life & Tribute"
-        style = tokens.typography.bodySmall
-        color = tokens.colors.textSecondary
+
+      navbarLibrary.Navbar.navLinks.linkPhotos {
+        font-size: 12,
+        font-family: "Cabin",
+        font-style: "Regular"
       }
-      text LinkPhotos {
-        content = "Photos"
-        style = tokens.typography.bodySmall
-        color = tokens.colors.textSecondary
+
+      navbarLibrary.Navbar.navLinks.linkDetails {
+        font-size: 12,
+        font-family: "Cabin",
+        font-style: "Regular"
       }
-      text LinkRSVP {
-        content = "RSVP"
-        style = tokens.typography.bodySmall
-        color = tokens.colors.primary900
-        weight = 600
+
+      navbarLibrary.Navbar.navLinks.rsvpBtn {
+        navbarLibrary.Navbar.navLinks.rsvpBtn.rsvpLabel {
+          font-family: "Cabin",
+          font-style: "Regular"
+        }
       }
     }
   }
 
-  // 2. Hero Section (Warm, Emotional, matching Lindy LaDow Hero style)
-  frame HeroSection {
-    width = 100%
-    layout = vertical
-    alignment = center
-    paddingVertical = tokens.spacing.section
-    paddingHorizontal = tokens.spacing.xl
-    gap = tokens.spacing.lg
-    backgroundColor = tokens.colors.primary50
+  // 2. Main Body Content (Matching app/page.tsx layout)
+  mainContentStack = frame {
+    left: 0px,
+    top: 63px,
+    width: 1200px,
+    height: 2651px,
+    layout: {direction: .column, align-items: .center, item-gap: 48px},
+    padding: [48px, 0px, 64px],
+    children: [framedFlyer, gatheringDetails, memoryBook, rsvpSection],
 
-    text Eyebrow {
-      content = "A TRIBUTE TO RICK"
-      style = tokens.typography.eyebrow
-      color = tokens.colors.primary700
-    }
+    framedFlyer = frame : flyerCardLibrary.FlyerCard {}
 
-    text NameHeading {
-      content = "Richard Earl LaDow Jr."
-      style = tokens.typography.heroDisplay
-      color = tokens.colors.textPrimary
-    }
+    gatheringDetails = frame : eventDetailsCardLibrary.EventDetailsCard {
+      eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow {
+        eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.locationCol {
+          eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.locationCol.locVenue {
+            font-size: 14,
+            font-family: "Cabin",
+            font-style: "Regular"
+          }
 
-    text LifeDates {
-      content = "October 5, 1957 — June 8, 2026"
-      style = tokens.typography.bodyLead
-      color = tokens.colors.primary800
-    }
+          eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.locationCol.locHeading {
+            font-size: 14
+          }
+        }
 
-    text RolesSubtitle {
-      content = "HUSBAND — FATHER — PAPA — SON — BROTHER — UNCLE — FRIEND"
-      style = tokens.typography.eyebrow
-      color = tokens.colors.primary600
-    }
+        eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.dateTimeCol {
+          height: 100%,
 
-    text PersonalQuote {
-      content = "“Truly, a loving brother to all.”"
-      font = tokens.typography.fontSerif
-      size = 24
-      style = italic
-      color = tokens.colors.primary900
-    }
+          eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.dateTimeCol.dtDate {
+            font-size: 14,
+            font-family: "Cabin",
+            font-style: "Regular"
+          }
 
-    frame HeroCTA {
-      layout = horizontal
-      gap = tokens.spacing.md
-      
-      instance RSVPButton of Button {
-        style = "primary"
-        label.content = "RSVP for the Memorial"
+          eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.dateTimeCol.dtHeading {
+            font-size: 14
+          }
+        }
       }
-      instance StoryButton of Button {
-        style = "outline"
-        label.content = "Read Rick's Story"
+    }
+
+    memoryBook = frame : memoryBookCardLibrary.MemoryBookCard {}
+
+    rsvpSection = frame : rsvpCardLibrary.RSVPCard {
+      rsvpCardLibrary.RSVPCard.formContainer {
+        rsvpCardLibrary.RSVPCard.formContainer.submitBtn {
+          rsvpCardLibrary.RSVPCard.formContainer.submitBtn.submitLabel {
+            font-family: "Cabin",
+            font-style: "SemiBold"
+          }
+        }
       }
     }
   }
 
-  // 3. Main Content Container
-  frame MainContent {
-    width = 1000
-    layout = vertical
-    alignment = center
-    gap = tokens.spacing.section
-    paddingVertical = tokens.spacing.section
+  // 3. Page Footer
+  bottomFooter = frame : footerLibrary.Footer {
+    width: 100%,
 
-    // Event Card Component
-    instance GatheringCard of EventDetailsCard {
-      width = 100%
-    }
-
-    // Story / Tribute Section
-    frame StorySection {
-      width = 100%
-      layout = vertical
-      backgroundColor = tokens.colors.bgSurface
-      padding = tokens.spacing.xl
-      cornerRadius = tokens.radii.md
-      gap = tokens.spacing.md
-      border = { width = 1, color = tokens.colors.borderSubtle }
-      shadow = tokens.shadows.card
-
-      text StoryTagline {
-        content = "HONORING HIS MEMORY"
-        style = tokens.typography.eyebrow
-        color = tokens.colors.primary700
-      }
-
-      text StoryHeading {
-        content = "Celebrating Rick's Life & Legacy"
-        style = tokens.typography.headingH2
-        color = tokens.colors.textPrimary
-      }
-
-      text StoryBody {
-        content = "Please join us for a private gathering to celebrate Rick, remember the life he lived, and honor the love, laughter, friendship, and memories he left with each of us.\n\nThroughout his life, Rick touched countless hearts with his kindness, humor, and unwavering devotion to family and friends. We welcome all who knew and loved him to share in this special afternoon of remembrance and reflection."
-        style = tokens.typography.bodyLead
-        color = tokens.colors.textSecondary
-      }
-    }
-
-    // Photo Gallery Section
-    instance Gallery of PhotoGallery {
-      width = 100%
-    }
-  }
-
-  // 4. Footer
-  frame PageFooter {
-    width = 100%
-    backgroundColor = tokens.colors.primary975
-    paddingVertical = tokens.spacing.xl
-    paddingHorizontal = tokens.spacing.xl
-    layout = vertical
-    alignment = center
-    gap = tokens.spacing.sm
-
-    text FooterName {
-      content = "Richard Earl LaDow Jr. (1957 — 2026)"
-      font = tokens.typography.fontSerif
-      size = 18
-      color = tokens.colors.primary200
-    }
-
-    text FooterNote {
-      content = "With love from his family and friends."
-      style = tokens.typography.bodySmall
-      color = tokens.colors.primary400
+    footerLibrary.Footer.footerRoles {
+      letter-spacing: 25%
     }
   }
 }

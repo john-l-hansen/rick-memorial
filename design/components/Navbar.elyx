@@ -1,0 +1,64 @@
+import "../tokens.elyx" as tokens
+
+export Navbar = frame {
+  name: "Navbar",
+  left: 0px,
+  top: 0px,
+  width: 1200px,
+  padding: [16px, 32px],
+  layout: { direction: .row, justify-content: .space-between, align-items: .center },
+  fill: tokens.colors.bgCanvas,
+  border: { width: 1px, color: tokens.colors.borderSubtle, sides: [.bottom] },
+  children: [brandLink, navLinks],
+
+  brandLink = frame {
+    layout: { direction: .row, align-items: .center, item-gap: 8px },
+    children: [brandTitle],
+    brandTitle = text {
+      contents: "RICHARD EARL LADOW JR.",
+      font-size: 18,
+      font-family: tokens.typography.fontSerif,
+      fill: tokens.colors.brand950
+    }
+  },
+
+  navLinks = frame {
+    layout: { direction: .row, align-items: .center, item-gap: 24px },
+    children: [linkDetails, linkPhotos, linkMemories, rsvpBtn],
+
+    linkDetails = text {
+      contents: "Service Details",
+      font-size: 14,
+      font-family: tokens.typography.fontSans,
+      fill: tokens.colors.brand800
+    },
+
+    linkPhotos = text {
+      contents: "Photos",
+      font-size: 14,
+      font-family: tokens.typography.fontSans,
+      fill: tokens.colors.brand800
+    },
+
+    linkMemories = text {
+      contents: "Share a Memory",
+      font-size: 14,
+      font-family: tokens.typography.fontSans,
+      fill: tokens.colors.brand800
+    },
+
+    rsvpBtn = frame {
+      padding: [8px, 16px],
+      corner-radius: tokens.lengths.radius-sm,
+      fill: tokens.colors.brand900,
+      layout: { direction: .row, align-items: .center, justify-content: .center },
+      children: [rsvpLabel],
+      rsvpLabel = text {
+        contents: "RSVP",
+        font-size: 12,
+        font-family: tokens.typography.fontSans,
+        fill: tokens.colors.textLight
+      }
+    }
+  }
+}

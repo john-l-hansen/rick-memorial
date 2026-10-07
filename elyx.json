@@ -1,5 +1,4 @@
 {
-  "name": "Rick Memorial",
   "defaults": {
     "text": {
       "font": {
@@ -11,8 +10,12 @@
     }
   },
   "assets": {
-    "additionalSourcePaths": [
-      "public/images"
-    ]
+    "images": {
+      "additionalSourcePaths": [
+        "public",
+        "public/images"
+      ]
+    }
   }
 }
+

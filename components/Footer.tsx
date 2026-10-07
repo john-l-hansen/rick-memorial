@@ -12,7 +12,7 @@ export default function Footer() {
         <p className="text-brand-400 font-serif italic text-sm mb-6">
           October 5, 1957 — June 8, 2026
         </p>
-        <p className="text-brand-500 text-xs tracking-widest uppercase mb-4">
+        <p className="text-brand-500 text-xs tracking-[0.25em] uppercase mb-4">
           Husband — Father — Papa — Son — Brother — Uncle — Friend
         </p>
         <div className="w-16 h-px bg-brand-800 mx-auto mb-6" />

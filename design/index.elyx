@@ -1,7 +1,10 @@
-// index.elyx - Entry point for Rick's Memorial Elyx Design System
+// index.elyx - Complete Design System & Production Screen Overview for Rick's Memorial
+import "./memorial-screen.elyx" as memorialScreen
 
-export * from "./tokens.elyx"
-export * from "./components/Button.elyx"
-export * from "./components/EventDetailsCard.elyx"
-export * from "./components/PhotoGallery.elyx"
-export * from "./memorial-screen.elyx"
+export overview = frame {
+  name: "Rick Memorial Production Tribute Web App",
+  left: 0px,
+  top: 0px,
+  children: [screen],
+  screen = frame : memorialScreen.MemorialScreen {}
+}

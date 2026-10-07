@@ -1,60 +1,59 @@
-// PhotoGallery.elyx - Photo grid component for memorial tribute
-
 import "../tokens.elyx" as tokens
+import "../../public/images/rick-01.png" as photo1
+import "../../public/images/rick-02.png" as photo2
+import "../../public/images/rick-03.png" as photo3
 
-component PhotoGallery {
-  layout = vertical
-  gap = tokens.spacing.lg
-  alignment = center
+export PhotoGallery = frame {
+  name: "Photo Gallery",
+  left: 0px,
+  top: 0px,
+  width: 860px,
+  layout: { direction: .column, align-items: .center, item-gap: 24px },
+  children: [sectionHeading, gridContainer],
 
-  frame SectionHeading {
-    layout = vertical
-    gap = tokens.spacing.xs
-    alignment = center
-
-    text Tagline {
-      content = "MEMORIES & MOMENTS"
-      style = tokens.typography.eyebrow
-      color = tokens.colors.primary700
+  sectionHeading = frame {
+    layout: { direction: .column, align-items: .center, item-gap: 8px },
+    children: [tagline, title],
+    tagline = text {
+      contents: "MEMORIES & MOMENTS",
+      font-size: 12,
+      font-family: tokens.typography.fontSans,
+      fill: tokens.colors.brand700
+    },
+    title = text {
+      contents: "Remembering the Life He Lived",
+      font-size: 28,
+      font-family: tokens.typography.fontSerif,
+      fill: tokens.colors.brand950
     }
+  },
 
-    text Title {
-      content = "Remembering the Life He Lived"
-      style = tokens.typography.headingH2
-      color = tokens.colors.textPrimary
-    }
-  }
+  gridContainer = frame {
+    layout: { direction: .row, item-gap: 16px, justify-content: .center },
+    children: [photoItem1, photoItem2, photoItem3],
 
-  frame GridContainer {
-    layout = horizontal
-    gap = tokens.spacing.md
-    wrap = true
+    photoItem1 = frame {
+      width: 260px,
+      height: 260px,
+      corner-radius: tokens.lengths.radius-sm,
+      fill: { image: { ref: photo1, sizing: .fill } },
+      border: { width: 1px, color: tokens.colors.brand200 }
+    },
 
-    frame PhotoItem1 {
-      width = 360
-      height = 420
-      cornerRadius = tokens.radii.md
-      backgroundColor = tokens.colors.primary200
-      shadow = tokens.shadows.card
-      border = { width = 1, color = tokens.colors.borderSubtle }
-    }
+    photoItem2 = frame {
+      width: 260px,
+      height: 260px,
+      corner-radius: tokens.lengths.radius-sm,
+      fill: { image: { ref: photo2, sizing: .fill } },
+      border: { width: 1px, color: tokens.colors.brand200 }
+    },
 
-    frame PhotoItem2 {
-      width = 360
-      height = 420
-      cornerRadius = tokens.radii.md
-      backgroundColor = tokens.colors.primary200
-      shadow = tokens.shadows.card
-      border = { width = 1, color = tokens.colors.borderSubtle }
-    }
-
-    frame PhotoItem3 {
-      width = 360
-      height = 420
-      cornerRadius = tokens.radii.md
-      backgroundColor = tokens.colors.primary200
-      shadow = tokens.shadows.card
-      border = { width = 1, color = tokens.colors.borderSubtle }
+    photoItem3 = frame {
+      width: 260px,
+      height: 260px,
+      corner-radius: tokens.lengths.radius-sm,
+      fill: { image: { ref: photo3, sizing: .fill } },
+      border: { width: 1px, color: tokens.colors.brand200 }
     }
   }
 }

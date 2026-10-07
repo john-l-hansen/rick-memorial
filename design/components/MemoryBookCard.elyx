@@ -1,0 +1,166 @@
+import "../tokens.elyx" as tokens
+
+export MemoryBookCard = frame {
+  name: "Digital Memory Book Card",
+  left: 0px,
+  top: 0px,
+  width: 860px,
+  padding: 40px,
+  corner-radius: tokens.lengths.radius-md,
+  fill: tokens.colors.bgSurface,
+  border: { width: 1px, color: tokens.colors.borderSubtle },
+  layout: { direction: .column, item-gap: 28px },
+  children: [bookHeader, passcodeBox, storiesRow],
+
+  bookHeader = frame {
+    width: 100%,
+    layout: { direction: .column, align-items: .center, item-gap: 6px },
+    children: [bookTag, bookTitle, bookDivider, bookSubtitle],
+
+    bookTag = text {
+      contents: "MEMORIES & REFLECTIONS",
+      font-size: 12,
+      font-family: tokens.typography.fontSans,
+      letter-spacing: 15%,
+      fill: tokens.colors.brand700
+    },
+
+    bookTitle = text {
+      contents: "Digital Memory Book",
+      font-size: 32,
+      font-family: tokens.typography.fontSerif,
+      fill: tokens.colors.brand950
+    },
+
+    bookDivider = frame {
+      width: 48px,
+      height: 2px,
+      fill: tokens.colors.brand400
+    },
+
+    bookSubtitle = text {
+      contents: "Share a memory, story, or message of comfort for Rick’s family.",
+      font-size: 14,
+      font-family: tokens.typography.fontSerif,
+      font-style: "Italic",
+      fill: tokens.colors.brand700
+    }
+  },
+
+  passcodeBox = frame {
+    width: 540px,
+    padding: 24px,
+    corner-radius: tokens.lengths.radius-md,
+    fill: tokens.colors.brand50,
+    border: { width: 1px, color: tokens.colors.brand200 },
+    layout: { direction: .column, align-items: .center, item-gap: 12px },
+    children: [pcTitle, pcDesc, pcInputRow],
+
+    pcTitle = text {
+      contents: "Family & Friends Passcode",
+      font-size: 18,
+      font-family: tokens.typography.fontSerif,
+      fill: tokens.colors.brand950
+    },
+
+    pcDesc = text {
+      align: .center,
+      contents: "To keep this space private and meaningful for Rick’s family, please enter the family passcode from your invitation or flyer to share a memory.",
+      font-size: 12,
+      font-family: tokens.typography.fontSans,
+      fill: tokens.colors.brand700
+    },
+
+    pcInputRow = frame {
+      width: 320px,
+      layout: { direction: .row, item-gap: 8px },
+      children: [inputBox, unlockBtn],
+
+      inputBox = frame {
+        width: 220px,
+        padding: [8px, 12px],
+        corner-radius: tokens.lengths.radius-sm,
+        fill: tokens.colors.bgSurface,
+        border: { width: 1px, color: tokens.colors.brand300 },
+        children: [inputPlaceholder],
+        inputPlaceholder = text {
+          contents: "Enter passcode...",
+          font-size: 13,
+          font-family: tokens.typography.fontSans,
+          fill: tokens.colors.brand400
+        }
+      },
+
+      unlockBtn = frame {
+        padding: [8px, 16px],
+        corner-radius: tokens.lengths.radius-sm,
+        fill: tokens.colors.brand900,
+        children: [unlockLabel],
+        unlockLabel = text {
+          contents: "Unlock",
+          font-size: 11,
+          font-family: tokens.typography.fontSans,
+          fill: tokens.colors.textLight
+        }
+      }
+    }
+  },
+
+  storiesRow = frame {
+    width: 100%,
+    layout: { direction: .row, item-gap: 20px },
+    children: [storyCard1, storyCard2],
+
+    storyCard1 = frame {
+      width: 380px,
+      padding: 20px,
+      corner-radius: tokens.lengths.radius-sm,
+      fill: tokens.colors.brand50,
+      border: { width: 1px, color: tokens.colors.brand200 },
+      layout: { direction: .column, item-gap: 12px },
+      children: [sc1Quote, sc1Footer],
+
+      sc1Quote = text {
+        width: 100%,
+        contents: "“Rick's warmth, ready smile, and huge heart touched everyone in the room. He was truly a loving brother to all, always there to lend a hand or share a laugh.”",
+        font-size: 14,
+        font-family: tokens.typography.fontSerif,
+        font-style: "Italic",
+        fill: tokens.colors.brand900
+      },
+
+      sc1Footer = text {
+        contents: "Family & Loved Ones • Family (June 2026)",
+        font-size: 11,
+        font-family: tokens.typography.fontSans,
+        fill: tokens.colors.brand700
+      }
+    },
+
+    storyCard2 = frame {
+      width: 380px,
+      padding: 20px,
+      corner-radius: tokens.lengths.radius-sm,
+      fill: tokens.colors.brand50,
+      border: { width: 1px, color: tokens.colors.brand200 },
+      layout: { direction: .column, item-gap: 12px },
+      children: [sc2Quote, sc2Footer],
+
+      sc2Quote = text {
+        width: 100%,
+        contents: "“Never missed a chance to tell a great story or make someone smile. Rick had a rare gift of making every person feel welcomed and appreciated.”",
+        font-size: 14,
+        font-family: tokens.typography.fontSerif,
+        font-style: "Italic",
+        fill: tokens.colors.brand900
+      },
+
+      sc2Footer = text {
+        contents: "Friends from Azusa • Friend (June 2026)",
+        font-size: 11,
+        font-family: tokens.typography.fontSans,
+        fill: tokens.colors.brand700
+      }
+    }
+  }
+}

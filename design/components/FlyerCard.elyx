@@ -1,0 +1,195 @@
+import "../tokens.elyx" as tokens
+import "../../public/images/rick-01.png" as photo1
+import "../../public/images/rick-02.png" as photo2
+import "../../public/images/rick-03.png" as photo3
+
+export FlyerCard = frame {
+  name: "Flyer Framed Card",
+  left: 0px,
+  top: 0px,
+  width: 860px,
+  padding: 48px,
+  corner-radius: tokens.lengths.radius-sm,
+  fill: tokens.colors.bgSurface,
+  border: { width: 1px, color: tokens.colors.brand300 },
+  layout: { direction: .column, align-items: .center, item-gap: 24px },
+  children: [
+    headerBlock,
+    triptychRow,
+    quoteText,
+    storyBlock,
+    serviceDetailsBlock,
+    rsvpCalloutBlock
+  ],
+
+  // 1. Header Block
+  headerBlock = frame {
+    width: 100%,
+    layout: { direction: .column, align-items: .center, item-gap: 8px },
+    children: [tributeTag, personName, lifeDates, rolesText],
+
+    tributeTag = text {
+      contents: "A Tribute to Rick",
+      font-size: 20,
+      font-family: tokens.typography.fontSerif,
+      font-style: "Italic",
+      fill: tokens.colors.brand700
+    },
+
+    personName = text {
+      contents: "Richard Earl LaDow Jr.",
+      font-size: 48,
+      font-family: tokens.typography.fontSerif,
+      fill: tokens.colors.brand950
+    },
+
+    lifeDates = text {
+      contents: "October 5, 1957 — June 8, 2026",
+      font-size: 22,
+      font-family: tokens.typography.fontSerif,
+      fill: tokens.colors.brand800
+    },
+
+    rolesText = text {
+      contents: "HUSBAND — FATHER — PAPA — SON — BROTHER — UNCLE — FRIEND",
+      font-size: 12,
+      font-family: tokens.typography.fontSans,
+      letter-spacing: 20%,
+      fill: tokens.colors.brand600
+    }
+  },
+
+  // 2. Photo Triptych
+  triptychRow = frame {
+    width: 100%,
+    layout: { direction: .row, item-gap: 16px, justify-content: .center },
+    children: [imgFrame1, imgFrame2, imgFrame3],
+
+    imgFrame1 = frame {
+      width: 240px,
+      height: 240px,
+      corner-radius: tokens.lengths.radius-xs,
+      fill: { image: { ref: photo1, sizing: .fill } },
+      border: { width: 1px, color: tokens.colors.brand200 }
+    },
+
+    imgFrame2 = frame {
+      width: 240px,
+      height: 240px,
+      corner-radius: tokens.lengths.radius-xs,
+      fill: { image: { ref: photo2, sizing: .fill } },
+      border: { width: 1px, color: tokens.colors.brand200 }
+    },
+
+    imgFrame3 = frame {
+      width: 240px,
+      height: 240px,
+      corner-radius: tokens.lengths.radius-xs,
+      fill: { image: { ref: photo3, sizing: .fill } },
+      border: { width: 1px, color: tokens.colors.brand200 }
+    }
+  },
+
+  // 3. Central Quote
+  quoteText = text {
+    contents: "Truly, a loving brother to all.",
+    font-size: 24,
+    font-family: tokens.typography.fontSerif,
+    font-style: "Italic",
+    fill: tokens.colors.brand900
+  },
+
+  // 4. Story Block
+  storyBlock = frame {
+    width: 680px,
+    layout: { direction: .column, align-items: .center, item-gap: 16px },
+    children: [storyP1, storyP2],
+
+    storyP1 = text {
+      width: 100%,
+      align: .center,
+      contents: "Please join us for a private gathering to celebrate Rick, remember the life he lived, and honor the love, laughter, friendship, and memories he left with each of us.",
+      font-size: 18,
+      font-family: tokens.typography.fontSerif,
+      fill: tokens.colors.brand900
+    },
+
+    storyP2 = text {
+      width: 100%,
+      align: .center,
+      contents: "We invite you to bring a favorite memory of Rick, written down or simply carried in your heart. There will be a special place to leave your written memories for our family to keep, and time to share stories together for those who would like to.",
+      font-size: 18,
+      font-family: tokens.typography.fontSerif,
+      fill: tokens.colors.brand900
+    }
+  },
+
+  // 5. Service Details Block
+  serviceDetailsBlock = frame {
+    width: 680px,
+    padding: [24px, 0px, 0px, 0px],
+    border: { width: 1px, color: tokens.colors.brand200, sides: [.top] },
+    layout: { direction: .column, align-items: .center, item-gap: 6px },
+    children: [srvDate, srvTime, srvDivider, srvVenue, srvAddress],
+
+    srvDate = text {
+      contents: "Saturday, November 7, 2026",
+      font-size: 20,
+      font-family: tokens.typography.fontSerif,
+      fill: tokens.colors.brand950
+    },
+
+    srvTime = text {
+      contents: "11:00 a.m. — 3:00 p.m.",
+      font-size: 18,
+      font-family: tokens.typography.fontSerif,
+      font-style: "Italic",
+      fill: tokens.colors.brand800
+    },
+
+    srvDivider = frame {
+      width: 32px,
+      height: 1px,
+      fill: tokens.colors.brand400
+    },
+
+    srvVenue = text {
+      contents: "Fraternal Order of Eagles — Azusa Aerie #2810",
+      font-size: 18,
+      font-family: tokens.typography.fontSerif,
+      fill: tokens.colors.brand950
+    },
+
+    srvAddress = text {
+      align: .center,
+      contents: "1603 San Gabriel Canyon Road\nAzusa, California 91702",
+      font-size: 16,
+      font-family: tokens.typography.fontSerif,
+      font-style: "Italic",
+      fill: tokens.colors.brand800
+    }
+  },
+
+  // 6. RSVP Callout Block
+  rsvpCalloutBlock = frame {
+    width: 680px,
+    layout: { direction: .column, align-items: .center, item-gap: 6px },
+    children: [rsvpNotice, rsvpEmailText],
+
+    rsvpNotice = text {
+      contents: "Kindly RSVP by November 1, 2026 if you plan on joining us:",
+      font-size: 16,
+      font-family: tokens.typography.fontSerif,
+      font-style: "Italic",
+      fill: tokens.colors.brand700
+    },
+
+    rsvpEmailText = text {
+      contents: "ricksmemorialtribute11726@gmail.com",
+      font-size: 20,
+      font-family: tokens.typography.fontSerif,
+      underline: .solid,
+      fill: tokens.colors.brand950
+    }
+  }
+}

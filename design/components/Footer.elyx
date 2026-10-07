@@ -1,0 +1,49 @@
+import "../tokens.elyx" as tokens
+
+export Footer = frame {
+  name: "Footer",
+  left: 0px,
+  top: 0px,
+  width: 1200px,
+  padding: [48px, 32px],
+  fill: tokens.colors.brand975,
+  border: { width: 1px, color: tokens.colors.brand950, sides: [.top] },
+  layout: { direction: .column, align-items: .center, item-gap: 8px },
+  children: [footerHeading, footerDates, footerRoles, footerDivider, footerCopyright],
+
+  footerHeading = text {
+    contents: "Richard Earl LaDow Jr.",
+    font-size: 26,
+    font-family: tokens.typography.fontSerif,
+    fill: tokens.colors.brand50
+  },
+
+  footerDates = text {
+    contents: "October 5, 1957 — June 8, 2026",
+    font-size: 14,
+    font-family: tokens.typography.fontSerif,
+    font-style: "Italic",
+    fill: tokens.colors.brand400
+  },
+
+  footerRoles = text {
+    contents: "HUSBAND — FATHER — PAPA — SON — BROTHER — UNCLE — FRIEND",
+    font-size: 11,
+    font-family: tokens.typography.fontSans,
+    letter-spacing: 15%,
+    fill: tokens.colors.brand500
+  },
+
+  footerDivider = frame {
+    width: 64px,
+    height: 1px,
+    fill: tokens.colors.brand800
+  },
+
+  footerCopyright = text {
+    contents: "Created with deep love and cherished memories by Rick’s family.",
+    font-size: 12,
+    font-family: tokens.typography.fontSans,
+    fill: tokens.colors.brand400
+  }
+}

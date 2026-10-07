@@ -54,10 +54,10 @@ export default function Navbar() {
           </span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm text-brand-800">
+        <nav className="hidden md:flex items-center gap-6 text-xs text-brand-800">
           <a
             href="#details"
-            className="hover:text-brand-950 transition-colors flex items-center gap-1.5"
+            className="hover:text-brand-950 transition-colors flex items-center gap-1.5 font-medium"
           >
             <Calendar className="w-3.5 h-3.5 text-brand-600" />
             Service Details

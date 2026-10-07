@@ -1,101 +1,193 @@
-// EventDetailsCard.elyx - Lindy LaDow styled card for memorial service details
-
 import "../tokens.elyx" as tokens
-import "./Button.elyx" as Button
 
-component EventDetailsCard {
-  layout = vertical
-  backgroundColor = tokens.colors.bgSurface
-  cornerRadius = tokens.radii.md
-  padding = tokens.spacing.xl
-  gap = tokens.spacing.lg
-  border = { width = 1, color = tokens.colors.borderSubtle }
-  shadow = tokens.shadows.card
+export EventDetailsCard = frame {
+  name: "Event Details Card",
+  left: 0px,
+  top: 0px,
+  width: 860px,
+  padding: 40px,
+  corner-radius: tokens.lengths.radius-md,
+  fill: tokens.colors.bgSurface,
+  border: { width: 1px, color: tokens.colors.borderSubtle },
+  layout: { direction: .column, item-gap: 28px },
+  children: [sectionHeader, infoColumnsRow, memoryInvitationBox],
 
-  frame HeaderBlock {
-    layout = vertical
-    gap = tokens.spacing.xxs
+  sectionHeader = frame {
+    width: 100%,
+    layout: { direction: .column, align-items: .center, item-gap: 6px },
+    children: [tagline, titleText, titleDivider],
 
-    text Tagline {
-      content = "CELEBRATION OF LIFE"
-      style = tokens.typography.eyebrow
-      color = tokens.colors.primary700
+    tagline = text {
+      contents: "GATHERING INFORMATION",
+      font-size: 12,
+      font-family: tokens.typography.fontSans,
+      letter-spacing: 15%,
+      fill: tokens.colors.brand700
+    },
+
+    titleText = text {
+      contents: "Celebration of Life",
+      font-size: 32,
+      font-family: tokens.typography.fontSerif,
+      fill: tokens.colors.brand950
+    },
+
+    titleDivider = frame {
+      width: 48px,
+      height: 2px,
+      fill: tokens.colors.brand400
     }
+  },
 
-    text Title {
-      content = "Gathering in Honor of Rick"
-      style = tokens.typography.headingH2
-      color = tokens.colors.textPrimary
-    }
-  }
+  infoColumnsRow = frame {
+    width: 100%,
+    layout: { direction: .row, item-gap: 24px },
+    children: [dateTimeCol, locationCol],
 
-  frame DetailList {
-    layout = vertical
-    gap = tokens.spacing.md
+    dateTimeCol = frame {
+      width: 378px,
+      padding: 24px,
+      corner-radius: tokens.lengths.radius-sm,
+      fill: tokens.colors.brand50,
+      border: { width: 1px, color: tokens.colors.brand100 },
+      layout: { direction: .column, item-gap: 8px },
+      children: [dtHeading, dtDate, dtTime, dtActionsRow],
 
-    frame DateRow {
-      layout = horizontal
-      gap = tokens.spacing.sm
-      
-      text DateLabel {
-        content = "When:"
-        weight = 600
-        style = tokens.typography.body
-        color = tokens.colors.primary900
+      dtHeading = text {
+        contents: "Date & Time",
+        font-size: 20,
+        font-family: tokens.typography.fontSerif,
+        fill: tokens.colors.brand950
+      },
+
+      dtDate = text {
+        contents: "Saturday, November 7, 2026",
+        font-size: 16,
+        font-family: tokens.typography.fontSans,
+        fill: tokens.colors.brand900
+      },
+
+      dtTime = text {
+        contents: "11:00 a.m. — 3:00 p.m.",
+        font-size: 14,
+        font-family: tokens.typography.fontSerif,
+        font-style: "Italic",
+        fill: tokens.colors.brand700
+      },
+
+      dtActionsRow = frame {
+        layout: { direction: .row, item-gap: 8px },
+        children: [gcalBtn, icalBtn],
+
+        gcalBtn = frame {
+          padding: [8px, 14px],
+          corner-radius: tokens.lengths.radius-sm,
+          fill: tokens.colors.brand900,
+          children: [gcalLabel],
+          gcalLabel = text {
+            contents: "Add to Google Calendar",
+            font-size: 11,
+            font-family: tokens.typography.fontSans,
+            fill: tokens.colors.textLight
+          }
+        },
+
+        icalBtn = frame {
+          padding: [8px, 14px],
+          corner-radius: tokens.lengths.radius-sm,
+          fill: tokens.colors.brand200,
+          children: [icalLabel],
+          icalLabel = text {
+            contents: "iCal / Outlook",
+            font-size: 11,
+            font-family: tokens.typography.fontSans,
+            fill: tokens.colors.brand900
+          }
+        }
       }
-      text DateValue {
-        content = "Saturday, November 7, 2026 | 11:00 a.m. — 3:00 p.m."
-        style = tokens.typography.body
-        color = tokens.colors.textSecondary
+    },
+
+    locationCol = frame {
+      width: 378px,
+      padding: 24px,
+      corner-radius: tokens.lengths.radius-sm,
+      fill: tokens.colors.brand50,
+      border: { width: 1px, color: tokens.colors.brand100 },
+      layout: { direction: .column, item-gap: 8px },
+      children: [locHeading, locVenue, locAddress, locActionsRow],
+
+      locHeading = text {
+        contents: "Location",
+        font-size: 20,
+        font-family: tokens.typography.fontSerif,
+        fill: tokens.colors.brand950
+      },
+
+      locVenue = text {
+        contents: "Fraternal Order of Eagles — Azusa Aerie #2810",
+        font-size: 15,
+        font-family: tokens.typography.fontSans,
+        fill: tokens.colors.brand900
+      },
+
+      locAddress = text {
+        contents: "1603 San Gabriel Canyon Road\nAzusa, California 91702",
+        font-size: 14,
+        font-family: tokens.typography.fontSerif,
+        font-style: "Italic",
+        fill: tokens.colors.brand700
+      },
+
+      locActionsRow = frame {
+        layout: { direction: .row, item-gap: 8px },
+        children: [gmapsBtn, appleMapsBtn],
+
+        gmapsBtn = frame {
+          padding: [8px, 14px],
+          corner-radius: tokens.lengths.radius-sm,
+          fill: tokens.colors.brand700,
+          children: [gmapsLabel],
+          gmapsLabel = text {
+            contents: "Google Maps",
+            font-size: 11,
+            font-family: tokens.typography.fontSans,
+            fill: tokens.colors.textLight
+          }
+        },
+
+        appleMapsBtn = frame {
+          padding: [8px, 14px],
+          corner-radius: tokens.lengths.radius-sm,
+          fill: tokens.colors.brand200,
+          children: [appleMapsLabel],
+          appleMapsLabel = text {
+            contents: "Apple Maps",
+            font-size: 11,
+            font-family: tokens.typography.fontSans,
+            fill: tokens.colors.brand900
+          }
+        }
       }
     }
+  },
 
-    frame LocationRow {
-      layout = horizontal
-      gap = tokens.spacing.sm
+  memoryInvitationBox = frame {
+    width: 100%,
+    padding: 20px,
+    corner-radius: tokens.lengths.radius-sm,
+    fill: tokens.colors.brand100,
+    border: { width: 1px, color: tokens.colors.brand200 },
+    layout: { direction: .column, align-items: .center },
+    children: [inviteQuote],
 
-      text LocationLabel {
-        content = "Where:"
-        weight = 600
-        style = tokens.typography.body
-        color = tokens.colors.primary900
-      }
-      text LocationValue {
-        content = "Fraternal Order of Eagles — Azusa Aerie #2810\n1603 San Gabriel Canyon Road, Azusa, CA 91702"
-        style = tokens.typography.body
-        color = tokens.colors.textSecondary
-      }
-    }
-
-    frame NoteRow {
-      layout = vertical
-      gap = tokens.spacing.xxs
-      padding = tokens.spacing.md
-      backgroundColor = tokens.colors.primary50
-      cornerRadius = tokens.radii.sm
-      border = { width = 1, color = tokens.colors.primary200 }
-
-      text MemoryNote {
-        content = "We invite you to bring a favorite memory of Rick, written down or simply carried in your heart. There will be a special place to leave your written memories for our family to keep."
-        style = tokens.typography.bodySmall
-        color = tokens.colors.textSecondary
-      }
-    }
-  }
-
-  frame ActionRow {
-    layout = horizontal
-    gap = tokens.spacing.md
-    alignment = center
-
-    instance RSVPButton of Button {
-      style = "primary"
-      label.content = "RSVP via Email (by Nov 1)"
-    }
-
-    instance DirectionsButton of Button {
-      style = "outline"
-      label.content = "Get Directions"
+    inviteQuote = text {
+      width: 100%,
+      align: .center,
+      contents: "“We invite you to bring a favorite memory of Rick, written down or simply carried in your heart. There will be a special place to leave your written memories for our family to keep, and time to share stories together for those who would like to.”",
+      font-size: 15,
+      font-family: tokens.typography.fontSerif,
+      font-style: "Italic",
+      fill: tokens.colors.brand900
     }
   }
 }
