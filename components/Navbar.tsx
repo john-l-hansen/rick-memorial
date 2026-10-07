@@ -1,22 +1,43 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Heart, Calendar, MessageSquare, Image, Mail } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const currentScrollY = Math.max(0, window.scrollY);
+      const delta = currentScrollY - lastScrollY.current;
+
+      setScrolled(currentScrollY > 20);
+
+      // Always show at the top of the page
+      if (currentScrollY <= 20) {
+        setIsVisible(true);
+      } else if (delta > 8 && currentScrollY > 80) {
+        // Scrolling down past header threshold: soft slide out of view
+        setIsVisible(false);
+      } else if (delta < -8) {
+        // Scrolling up: soft-quick snap back into view
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transform will-change-transform transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      } ${
         scrolled
           ? "bg-brand-50/95 backdrop-blur-md shadow-sm border-b border-brand-200/80 py-3"
           : "bg-transparent py-5"
