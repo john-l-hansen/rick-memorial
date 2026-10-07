@@ -107,6 +107,18 @@ export tributeScreen = frame : memorialScreen.MemorialScreen {
     }
   }
 
+  topNav {
+    brandLink {
+      width: .auto,
+
+      brandTitle {
+        font-family: "Cabin",
+        font-style: "Bold",
+        letter-spacing: 25%
+      }
+    }
+  }
+
   layer1 = frame {
     left: 24px,
     top: 58px,
