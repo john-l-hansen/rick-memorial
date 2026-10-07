@@ -73,6 +73,13 @@ export MemorialScreen = frame {
       flyerCardLibrary.FlyerCard.quoteText {
         font-size: 26
       }
+
+      flyerCardLibrary.FlyerCard.headerBlock {
+        flyerCardLibrary.FlyerCard.headerBlock.rolesText {
+          font-family: "Cabin",
+          font-style: "Regular"
+        }
+      }
     }
 
     gatheringDetails = frame : eventDetailsCardLibrary.EventDetailsCard {
@@ -111,7 +118,9 @@ export MemorialScreen = frame {
 
       eventDetailsCardLibrary.EventDetailsCard.sectionHeader {
         eventDetailsCardLibrary.EventDetailsCard.sectionHeader.tagline {
-          font-size: 10
+          font-size: 10,
+          font-family: "Cabin",
+          font-style: "Regular"
         }
       }
     }
