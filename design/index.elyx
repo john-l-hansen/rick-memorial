@@ -1,15 +1,9 @@
-// index.elyx - Complete Design System & Production Screen Overview for Rick's Memorial
+// index.elyx - Design System & Production Screen Overview for Rick's Memorial
 import "design/tokens.elyx" as tokens
 import "design/memorial-screen.elyx" as memorialScreen
 
-export overview = frame {
-  name: "Rick Memorial Production Tribute Web App",
-  left: 0px,
-  top: 0px,
-  width: 1200px,
-  fill: tokens.colors.bgCanvas,
-  layout: {direction: .column},
-  children: [screen],
-  screen = frame : memorialScreen.MemorialScreen {}
+export tributeScreen = frame : memorialScreen.MemorialScreen {
+  name: "Rick Memorial Tribute Web Screen",
+  left: 40px,
+  top: 40px
 }
-
