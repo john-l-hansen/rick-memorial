@@ -127,6 +127,30 @@ export MemorialScreen = frame {
     }
 
     memoryBook = frame : memoryBookCardLibrary.MemoryBookCard {
+      memoryBookCardLibrary.MemoryBookCard.storiesRow {
+        memoryBookCardLibrary.MemoryBookCard.storiesRow.storyCard2 {
+          memoryBookCardLibrary.MemoryBookCard.storiesRow.storyCard2.sc2Footer {
+            font-family: "Cabin",
+            font-style: "Regular"
+          }
+
+          memoryBookCardLibrary.MemoryBookCard.storiesRow.storyCard2.sc2Quote {
+            line-height: 1.5
+          }
+        }
+
+        memoryBookCardLibrary.MemoryBookCard.storiesRow.storyCard1 {
+          memoryBookCardLibrary.MemoryBookCard.storiesRow.storyCard1.sc1Footer {
+            font-family: "Cabin",
+            font-style: "Regular"
+          }
+
+          memoryBookCardLibrary.MemoryBookCard.storiesRow.storyCard1.sc1Quote {
+            line-height: 1.5
+          }
+        }
+      }
+
       memoryBookCardLibrary.MemoryBookCard.bookHeader {
         memoryBookCardLibrary.MemoryBookCard.bookHeader.bookTag {
           left: 290px,
