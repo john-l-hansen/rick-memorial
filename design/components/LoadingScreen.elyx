@@ -1,0 +1,46 @@
+import "../tokens.elyx" as tokens
+
+export LoadingScreen = frame {
+  name: "Loading Screen",
+  left: 0px,
+  top: 0px,
+  width: 600px,
+  height: 400px,
+  layout: {direction: .column, align-items: .center, justify-content: .center, item-gap: 24px},
+  padding: [48px, 32px],
+  fill: tokens.colors.bgCanvas,
+  children: [logoMonogram, loadingBarTrack, statusText],
+
+  logoMonogram = text {
+    contents: "Richard Earl LaDow Jr.",
+    font-size: 22,
+    font-family: tokens.typography.fontSerif,
+    fill: tokens.colors.brand950
+  },
+
+  loadingBarTrack = frame {
+    width: 240px,
+    height: 2px,
+    fill: tokens.colors.brand200,
+    corner-radius: tokens.lengths.radius-pill,
+    children: [loadingBarFill],
+
+    loadingBarFill = frame {
+      left: 0px,
+      top: 0px,
+      width: 140px,
+      height: 2px,
+      fill: tokens.colors.brand800,
+      corner-radius: tokens.lengths.radius-pill
+    }
+  },
+
+  statusText = text {
+    contents: "Loading... one moment.",
+    font-size: 13,
+    font-family: tokens.typography.fontSans,
+    font-style: "Regular",
+    letter-spacing: 5%,
+    fill: tokens.colors.brand700
+  }
+}

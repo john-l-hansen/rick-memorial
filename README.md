@@ -129,6 +129,7 @@ The design layer is modularized under [`design/`](./design):
 - **[`tokens.elyx`](./design/tokens.elyx):** Full chromatic scale (50 through 975), typographic scale, corner radii, and elevation shadows.
 - **[`memorial-screen.elyx`](./design/memorial-screen.elyx):** Composite canvas mapping the print flyer's double-border geometry into responsive web viewports.
 - **[`components/Button.elyx`](./design/components/Button.elyx):** Polymorphic button primitives (Primary, Outline, Secondary).
+- **[`components/LoadingScreen.elyx`](./design/components/LoadingScreen.elyx):** Delicate animated loading bar and status typography.
 - **[`components/EventDetailsCard.elyx`](./design/components/EventDetailsCard.elyx):** Structured service information card.
 - **[`components/PhotoGallery.elyx`](./design/components/PhotoGallery.elyx):** Triptych layout with aspect ratio preserving containers.
 - **[`elyx.json`](./elyx.json):** Root project configuration enabling workspace discovery.

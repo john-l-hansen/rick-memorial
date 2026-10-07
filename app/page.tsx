@@ -7,11 +7,13 @@ import EventDetails from "@/components/EventDetails";
 import RSVPSection from "@/components/RSVPSection";
 import DigitalMemoryBook from "@/components/DigitalMemoryBook";
 import Footer from "@/components/Footer";
+import LoadingScreen from "@/components/LoadingScreen";
 import { Printer } from "lucide-react";
 
 export default function MemorialPage() {
   return (
     <div className="min-h-screen bg-brand-50 flex flex-col justify-between">
+      <LoadingScreen />
       <Navbar />
 
       <main className="flex-1 pt-20 sm:pt-24 pb-16 px-3 sm:px-6">
