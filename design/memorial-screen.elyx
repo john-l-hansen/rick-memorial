@@ -1,3 +1,6 @@
+import "public/images/rick-03.png" as photo3
+import "public/images/rick-02.png" as photo2
+import "public/images/rick-01.png" as photo1
 import "design/tokens.elyx" as tokens
 import "design/components/Navbar.elyx" as navbarLibrary
 import "design/components/FlyerCard.elyx" as flyerCardLibrary
@@ -18,43 +21,50 @@ export MemorialScreen = frame {
   topNav = frame : navbarLibrary.Navbar {
     width: 100%,
 
-    navbarLibrary.Navbar.navLinks {
-      navbarLibrary.Navbar.navLinks.rsvpBtn {
-        navbarLibrary.Navbar.navLinks.rsvpBtn.rsvpLabel {
-          font-family: "Cabin",
-          font-style: "Regular"
+    navLinks {
+      rsvpBtn {
+        rsvpLabel {
+          font-style: "Regular",
+          font-family: "Cabin"
         }
       }
 
-      navbarLibrary.Navbar.navLinks.linkMemories {
+      linkMemories {
+        contents: "SHARE A MEMORY",
         font-size: 10,
-        font-family: "Cabin",
-        font-style: "Regular"
+        font-style: "SemiBold",
+        letter-spacing: 20%,
+        font-family: "Cabin"
       }
 
-      navbarLibrary.Navbar.navLinks.linkPhotos {
+      linkPhotos {
+        contents: "PHOTOS",
         font-size: 10,
-        font-family: "Cabin",
-        font-style: "Regular"
+        font-style: "SemiBold",
+        letter-spacing: 20%,
+        font-family: "Cabin"
       }
 
-      navbarLibrary.Navbar.navLinks.linkDetails {
+      linkDetails {
+        contents: "SERVICE DETAILS",
         font-size: 10,
-        font-family: "Cabin",
-        font-style: "Regular"
+        font-style: "SemiBold",
+        letter-spacing: 20%,
+        font-family: "Cabin"
       }
     }
 
-    navbarLibrary.Navbar.brandLink {
+    brandLink {
       left: 32px,
       top: 23px,
-      width: 175px,
+      width: .auto,
       height: 17px,
 
-      navbarLibrary.Navbar.brandLink.brandTitle {
+      brandTitle {
         font-size: 12,
-        font-style: "Medium",
-        letter-spacing: 5%
+        font-family: "Cabin",
+        font-style: "Bold",
+        letter-spacing: 25%
       }
     }
   }
@@ -66,111 +76,117 @@ export MemorialScreen = frame {
     width: 1200px,
     layout: {direction: .column, align-items: .center, item-gap: 48px},
     padding: [48px, 0px, 64px],
-    children: [framedFlyer, gatheringDetails, memoryBook, rsvpSection],
-
-    framedFlyer = frame : flyerCardLibrary.FlyerCard {
-      flyerCardLibrary.FlyerCard.quoteText {
-        font-size: 26
-      }
-
-      flyerCardLibrary.FlyerCard.headerBlock {
-        flyerCardLibrary.FlyerCard.headerBlock.rolesText {
-          font-family: "Cabin",
-          font-style: "Regular"
-        }
-      }
-    }
-
-    gatheringDetails = frame : eventDetailsCardLibrary.EventDetailsCard {
-      eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow {
-        layout.item-gap: 16px,
-
-        eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.locationCol {
-          width: 388px,
-
-          eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.locationCol.locVenue {
-            font-size: 14,
-            font-family: "Cabin",
-            font-style: "Regular"
-          }
-
-          eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.locationCol.locHeading {
-            font-size: 14
-          }
-        }
-
-        eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.dateTimeCol {
-          width: 388px,
-
-          eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.dateTimeCol.dtDate {
-            font-size: 14,
-            font-family: "Cabin",
-            font-style: "Regular"
-          }
-
-          eventDetailsCardLibrary.EventDetailsCard.infoColumnsRow.dateTimeCol.dtHeading {
-            font-size: 14
-          }
-        }
-      }
-
-      eventDetailsCardLibrary.EventDetailsCard.sectionHeader {
-        eventDetailsCardLibrary.EventDetailsCard.sectionHeader.tagline {
-          font-size: 10,
-          font-family: "Cabin",
-          font-style: "Regular",
-          letter-spacing: 25%
-        }
-      }
-    }
-
-    memoryBook = frame : memoryBookCardLibrary.MemoryBookCard {
-      memoryBookCardLibrary.MemoryBookCard.emptyStateBox {
-        memoryBookCardLibrary.MemoryBookCard.emptyStateBox.emptySubtitle {
-          font-family: "Cabin",
-          font-style: "Regular"
-        }
-      }
-
-      memoryBookCardLibrary.MemoryBookCard.bookHeader {
-        memoryBookCardLibrary.MemoryBookCard.bookHeader.bookTag {
-          left: 290px,
-          top: 0px,
-          width: 200px,
-          height: 15px,
-          font-size: 10,
-          letter-spacing: 25%
-        }
-      }
-
-      memoryBookCardLibrary.MemoryBookCard.passcodeBox {
-        width: 100%,
-
-        memoryBookCardLibrary.MemoryBookCard.passcodeBox.pcDesc {
-          width: 100%,
-          line-height: 1.75
-        }
-      }
-    }
-
-    rsvpSection = frame : rsvpCardLibrary.RSVPCard {
-      rsvpCardLibrary.RSVPCard.formContainer {
-        rsvpCardLibrary.RSVPCard.formContainer.submitBtn {
-          rsvpCardLibrary.RSVPCard.formContainer.submitBtn.submitLabel {
-            font-family: "Cabin",
-            font-style: "SemiBold"
-          }
-        }
-      }
-    }
+    children: [.nil, .nil, .nil, .nil]
   }
 
   // 3. Page Footer
   bottomFooter = frame : footerLibrary.Footer {
-    width: 100%,
+    left: 0px,
+    top: 0px,
+    height: 100%,
+    layout.item-gap: 32px,
+    overrides: [
+      insert(footerDetails, after = footerLibrary.Footer.footerHeading),
+      remove(footerLibrary.Footer.footerRoles),
+      remove(footerLibrary.Footer.footerDates)
+    ],
 
-    footerLibrary.Footer.footerRoles {
-      letter-spacing: 25%
+    footerCopyright {
+      fill[0].color: tokens.colors.brand900
     }
+  }
+
+  GroupedStack = frame {
+    left: 164.5px,
+    top: 0px,
+    width: 435px,
+    height: .auto,
+    layout: {direction: .column, align-items: .center, item-gap: 10px},
+    overflow: .visible,
+    children: [tributeTag, personName]
+  }
+
+  tributeTag = text {
+    left: 155px,
+    top: 0px,
+    width: 125px,
+    height: 24px,
+    fill: tokens.colors.brand700,
+    contents: "A Tribute to Rick",
+    font-size: 20,
+    font-family: tokens.typography.fontSerif,
+    font-style: "Italic"
+  }
+
+  personName = text {
+    left: 0px,
+    top: 96px,
+    width: 435px,
+    height: 58px,
+    fill: tokens.colors.brand950,
+    contents: "Richard Earl LaDow Jr.",
+    font-size: 48,
+    font-family: tokens.typography.fontSerif
+  }
+
+  layer1 = frame {
+    left: 24px,
+    top: 58px,
+    width: 75%,
+    height: 42px,
+    overflow: .visible,
+    children: pcDesc
+  }
+
+  pcDesc = text {
+    left: 0px,
+    top: 0px,
+    width: 100%,
+    height: 42px,
+    fill: tokens.colors.brand700,
+    contents: "To keep this space private and meaningful for Rick’s family, please enter the family passcode from your invitation or flyer to share a memory.",
+    font-size: 12,
+    font-family: tokens.typography.fontSans,
+    line-height: 1.75,
+    align: .center
+  }
+
+  footerDetails = frame {
+    layout: {direction: .column, align-items: .center, item-gap: 24px},
+    overflow: .visible,
+    children: layer2
+  }
+
+  layer2 = frame {
+    left: 356.5px,
+    top: 103px,
+    width: 487px,
+    height: 61px,
+    overflow: .visible,
+    children: [footerDates, footerRoles]
+  }
+
+  footerDates = text {
+    left: 134px,
+    top: 0px,
+    width: 219px,
+    height: 24px,
+    fill: tokens.colors.brand400,
+    contents: "October 5, 1957 — June 8, 2026",
+    font-size: 20,
+    font-family: tokens.typography.fontSerif,
+    font-style: "Italic"
+  }
+
+  footerRoles = text {
+    left: 0px,
+    top: 48px,
+    width: 487px,
+    height: 13px,
+    fill: tokens.colors.brand500,
+    contents: "HUSBAND — FATHER — PAPA — SON — BROTHER — UNCLE — FRIEND",
+    font-size: 11,
+    font-family: tokens.typography.fontSans,
+    letter-spacing: 25%
   }
 }
